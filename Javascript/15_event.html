@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이벤트처리</title>
+    <style>
+        div {
+            width:300px; height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>고전이벤트 처리</h1>
+    <div id=area></div>
+    password<input type="password" id='pw' /><br>
+    password 확인<input type="password" id='pw_ck' />
+    <span id="result"></span>
+    <!-- button[class="btn"]{}*10 -->
+    <button class="btn">1</button>
+    <button class="btn">2</button>
+    <button class="btn">3</button>
+    <button class="btn">4</button>
+    <button class="btn"></button>5</button>
+    <button class="btn">6</button>
+    <button class="btn">7</button>
+    <button class="btn">8</button>
+    <button class="btn">9</button>
+    <button class="btn">10</button>
+    <script>
+        var btns = document.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click",function(){
+                console.log(this);
+                var d = document.createElement('div');
+                var t = document.createTextNode(i + "가 생성");
+                d.appendChild(t);
+                // this.appendChild(d);
+                // this.parentNode.appendChild(d);
+                console.log(this.previousSibling);
+                // this.previousSibling.previousSibling.appendChild(d);
+                this.previousElementSibling.appendChild(d);
+            })
+        }
+
+
+        var doc = document.getElementById("area");
+        // area.onmouseover = function() {
+        // doc.onmouseover = function() {
+        //     doc.setAttribute("style","background-color:tomato; color:white; font-size:30px;");
+        //     doc.appendChild(document.createTextNode("졸지마요~"));
+        // }
+
+        doc.addEventListener("mouseover", function () {
+            // doc.addEventListener("click", function(){
+            doc.setAttribute("style", "background-color:tomato; color:white; font-size:30px;");
+            doc.appendChild(document.createTextNode("졸지마요~"));
+        });
+
+        area.onmouseleave = function () {
+            doc.setAttribute("style", "background-color:white; color:green; font-size:30px;");
+        }
+
+        var pwCk = document.getElementById('pw_ck');
+        // pwCk.onkeypress = function () {
+        //     var pw = document.getElementById('pw').value;
+        //     var ckValue = pwCk.value;
+        //     var result = document.getElementById("result");
+        //     if (pw == ckValue) {
+        //         result.innerText = "패스워드가 일치합니다.";
+        //         result.setAttribute("style", "color:green");
+        //     } else {
+        //         result.innerText = "패스워드가 일치하지 않습니다.";
+        //         result.setAttribute("style", "color:red");
+        //     }
+        // }
+        // pwCk.addEventListener("blur", function () {
+        pwCk.addEventListener("keyup", function () {
+            var pw = document.getElementById('pw').value;
+            var ckValue = pwCk.value;
+            var result = document.getElementById("result");
+            if (pw === ckValue) {
+                result.innerText = "패스워드가 일치합니다.";
+                result.setAttribute("style", "color:green");
+            } else {
+                result.innerText = "패스워드가 일치하지 않습니다.";
+                result.setAttribute("style", "color:red");
+            }
+        });
+    </script>
+    <!-- <form action="#" onsubmit="return fn_validate();">  -->
+    <form action="#"> 
+        아이디 <input type="text" name="id"/>
+        패스워드 <input type="password" name="pw"/>
+        <input type="submit" value="로그인" onclick="return fn_validate();"/>
+        <!-- return으로 하지 않으면 submit이 수행됨-->
+        <!-- <input type="submit" value="로그인" onclick="fn_validate();"/> -->
+    </form>
+    <script>
+        function fn_validate() {
+            var id = document.getElementsByName("id")[0].value;
+            
+            if (id.length < 4){
+                alert("아이디 4글자 이상 입력하세요!")
+                return false;
+            }
+            return true;
+            // return true;
+        }
+    </script>
+</body>
+
+</html>

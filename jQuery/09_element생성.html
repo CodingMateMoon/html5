@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>element 생성</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        div{
+            width:300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="area"></div>
+    <button onclick="appendTest()">객체생성!</button>
+    <button onclick="moveTest()">이동!</button>
+    <script>
+        function appendTest() {
+            /* prepend append 자식으로 들어감, before after : 형제로 들어감*/
+            var newEl = $("<h3></h3>").html("h3 생성").css("color", "lightcoral");
+            var newEl2 = $("<h3></h3>").html("h3 after").css("color", "lightcoral");
+            $("#area").append(newEl);
+            $("#area").append($("<h3></h3>").html("h3 append").css("color", "lightcoral"));
+            // $("#area").after(newEl2);
+            $("#area").after($("<image src=' http://attach.s.op.gg/forum/20171205102009_982656.png'/>"));
+            // $("#area").append($("<image src=' http://attach.s.op.gg/forum/20171205102009_982656.png'/>"));
+            var newEl3 = $('<iframe></iframe>').attr({"src":"https://iei.or.kr", "width":"100%", "height":"300px"});
+            $("#area").before(newEl3);
+            var newEl4 = $("<img>").attr({"src":"https://cdn.pixabay.com/photo/2018/12/15/02/53/flower-3876195_960_720.jpg", "width":"100%", "height":"200px"});
+            $("#area").prepend(newEl4);
+        }
+
+        function moveTest() {
+            $("#area").prepend($("h3"));
+        }
+    </script>
+</body>
+</html>

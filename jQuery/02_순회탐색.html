@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <title>순회탐색하기</title>
+    <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+</head>
+
+<body>
+    <h2>filterling 메소드</h2>
+    <p>
+        선택자로 지정한 객체 그룹을 기준으로 지정한 위치 및 조건에 맞는 객체를 선택하는 메소드
+        $(선택자).first() : 선택된 elements중에 첫번째 element
+        <br>
+        $(선택자).last() : 선택된 elements중에 마지막 element
+        $(선택자).eq(매개변수) : 선택된 elements중 매개변수와 인덱스번호가 같은 elements
+        $(선택자).filter(매개변수) : 선택된 elements중 매개변수와 같은 elements
+        $(선택자).not() : 선택된 elements중 매개변수가 아닌 elements들
+    </p>
+    <!-- h4{}*5 -->
+    <h4>1</h4>
+    <h4 class="fil">2</h4>
+    <h4 class="fil">3</h4>
+    <h4>4</h4>
+    <h4 class="fil">5</h4>
+    <div class="fil">div 야</div>
+    <div>
+        <h1>h1이야</h1>
+        <h4>p1</h4>
+        <h4>p2</h4>
+        <h4>p3</h4>
+        <h4>p4</h4>
+        <h4>p5</h4>
+        <h4>p6</h4>
+        <div>
+            <h4>h4 1</h4>
+            <h4>h4 2</h4>
+            <h4>h4 3</h4>
+            <h4>h4 4</h4>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            console.log($('h4'));
+            console.log($('h4').first().html());
+            console.log($('h4').last().html());
+            // $(".fil").first().css("background-color", "green");
+            $(".fil:first").css("background-color", "green");
+            $(".fil").last().css("background-color", "blue");
+            // h4 태그 fil 그룹 last 태그
+            $('h4.fil').last().css("background-color", "yellow");
+            var el = $('h4.fil').last();
+            console.log(el);
+            el.css("color", "red");
+            var el2 = document.querySelectorAll("h4.fil");
+            el2[0].setAttribute("style", "color:skyblue");
+            // $('h4').css("background-color", "skyblue");
+            $('div>h4').eq(3).css({
+                "background-color": "skyblue",
+                "font-size": "25px",
+                "font-weight": "bold"
+            })
+            $('div h4, div>h4').filter("h4:even").css("color", "green");
+            $("div div>h4").eq(2).css("background-color", "skyblue");
+
+            $("div h4").eq(9).css("background-color", "magenta");
+            var el3 = $("div h4").filter(function (index, item) {
+                console.log(index + " : " + item.innerHTML);
+                if (index == 0 || index == 1 || index == 3 || index == 5 || index == 7) {
+                    return true;
+                }
+            });
+            el3.css("background-color", "yellow");
+            console.log(el3);
+            for (var i = 0; i < el3.length; i++) {
+                console.log(el3[i].innerHTML);
+            }
+            // $('h4').not(".fil").css("background-color", "red");
+
+
+            /* 
+                $(‘s’).first() 선택된 요소 중 제일 처음 있는 요소 리턴
+                $(‘s’).last() 선택된 요소 중 제일 마지막에 있는 요소 리턴
+                $(‘s’).eq(숫자) 인덱스번호와 일치하는 요소 리턴 (0부터시작)
+                $(‘s’).filter(“검색식|선택자”) 인자값과 일치하는 요소만 리턴
+                $(‘s’).not() 인자값과 일치하지 않는 요소만 리턴
+            */
+        });
+    </script>
+    <h3>순회탐색 ancestors 부모검색</h3>
+    <p>
+        선택된 element의 부모를 선택하는 것
+        $(선택자).parent() : 선택된 elements의 direct부모
+        $(선택자).parents() : 선택된 elements의 모든 부모
+        $(선택자).parentsUntil(매개변수) : 선택된 elements의 모든부모 중 매개변수 까지만
+    </p>
+    <style>
+        div.wrap,
+        div.wrap>div {
+            width: 300px;
+            height: 100px;
+            border: 1px solid rebeccapurple;
+        }
+
+        ul,
+        li,
+        span {
+            border: 1px solid rebeccapurple;
+        }
+    </style>
+    <div class="wrap">
+        <div>span 증조할아버지
+            <ul>span 할아버지
+                <li>li span 부모
+                    <span>span</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            console.log($('span').parent()[0].innerHTML);
+            $('span').parent().css("border", "3px solid yellow");
+            $('span').parent().parent().parent().css("border", "5px solid black");
+            // $('span').parents(3).css("border", "5px solid blue");
+            console.log($('span').parents());
+            console.log($('span').parents("ul"));
+            console.log($('span').parents("div"));
+            $("span").parentsUntil("div.wrap").css("background", "floralwhite");
+            // $("span").parentsUntil("div").css("background", "floralwhite");
+            // $("span").parentsUntil("div.wrap").css("border", "10px solid blue");
+        });
+        /* Ancestors메소드
+        #선택된 요소의 상위 요소들을 선택할 수 있는 메소드
+        메소드 내용
+        $(‘s’).parent() 선택된 요소의 바로 위 상위요소만 리턴
+        $(‘s’).parents([인자])
+        선택된 요소의 모든 상위 요소 리턴,
+        매개변수가 있으면 매개변수와 일치하는 부모만
+        리턴
+        $(‘s’).parentsUntil([인자])
+        선택된 요소부터 인자요소전까지 범위의 요소 리
+        턴*/
+    </script>
+    <!-- <div id="container"> -->
+    <div>
+        <div>
+            <button onclick="addElement(this)">
+                element 추가
+            </button>
+        </div>
+    </div>
+    <div>
+        <div>
+            <button onclick="addElement(this)">
+                element 추가
+            </button>
+        </div>
+    </div>
+    <script>
+        function addElement(e) {
+            // var el = $('#container');
+            console.log(e);
+            var el = $(e).parent().parent();
+            var addEl = $("<button onclick='addtest()'>추가실행</button>");
+            // el.append(addEl);
+            el.prepend(addEl);
+        }
+    </script>
+</body>
+
+</html>

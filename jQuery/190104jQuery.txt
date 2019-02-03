@@ -1,0 +1,15 @@
+http://jquery.com/
+-> Download jQuery v3.3.1
+-> jQuery 
+Download the compressed, production jQuery 3.3.1
+내용 다른 이름으로 저장
+-> jquery-3.3.1.min.js
+
+jQuery Selectors : https://www.w3schools.com/jquery/jquery_ref_selectors.asp
+
+:first ex) $("p:first")	The first <p> element 페이지 p태그 중 첫번째
+:last ex) $("p:last")	The last <p> element 페이지 p태그 중 마지막
+:even ex) 페이지 p태그 중 짝수
+:first-of type Selector : https://www.w3schools.com/jquery/sel_firstoftype.asp -> Try it Yourself
+nth-child(n) : 타입 상관없이 태그 순서대로 n번째
+nth-of-type(n) : 같은 타입들만 기준으로 n번째

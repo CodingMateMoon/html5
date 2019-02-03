@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>후손자손선택자</title>
+    <style>
+        /* 자손 선택자 : 선택자 > 자손선택자*/
+        header>nav {
+            background-color: lime;
+        }
+
+        /* a {
+            background-color:deepskyblue;
+        } */
+        /* section>nav {
+            background-color: deeppink;
+        } */
+
+        /* 후손 선택자 : 선택자 후손선택자*/
+        /* header li {
+            background-color:darkgray;
+        } */
+
+        /* ul li {
+            background-color: darkgray;
+        } */
+
+        /* body li {
+            background-color: aquamarine;
+        } */
+        header li {
+            background-color:cyan;
+        }
+
+        header a, h1 {
+            background-color:violet;
+        }
+        section a {
+            background-color:khaki;
+        }
+
+        article li > a{
+            background-color:skyblue;
+        }
+
+        /* article > ul > li > a {
+           background-color:skyblue;
+        } */
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <li>하하하</li>
+        <h1>자손? 후손?</h1>
+        <ul>
+            <li>너는 되니?</li>
+        </ul>
+
+        <nav>
+            <a href="#">aaa</a>
+            <a href="#">bbb</a>
+            <a href="#">ccc</a>
+            <a href="#">ddd</a>
+        </nav>
+
+    </header>
+    <section>
+        <article>
+            <nav>
+                <a href="#">aaa</a>
+                <a href="#">bbb</a>
+                <a href="#">ccc</a>
+                <a href="#">ddd</a>
+            </nav>
+        </article>
+        <article>
+            <ul>
+                <li>신재민<a href="#">신재민</a></li>
+                <li>박진우<a href="#">박진우</a></li>
+                <li>한솔<a href="#">한솔</a></li>
+                <li>권민아<a href="#">권민아</a></li>
+            </ul>
+        </article>
+        <ul>
+            <li><a href="#">google</a></li>
+            <li><a href="#">naver</a></li>
+            <li><a href="#">daum</a></li>
+            <li><a href="#">nate</a></li>
+        </ul>
+    </section>
+</body>
+
+</html>

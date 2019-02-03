@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>메리크리스마스</title>
+    <style>
+        body {
+            background-image: url(back1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        header {
+            width: 100%;
+            height: 100px;
+            border: 2px solid chartreuse;
+            /* margin: 5px; */
+        }
+
+        aside {
+            width: 24%;
+            height: 70%;
+            /* border: 1px solid black; */
+            display: inline-block;
+        }
+
+        aside>ul>li {
+            display: inline;
+        }
+
+        section {
+            width: 50%;
+            height: 50%;
+            display: inline-block;
+        }
+
+        .table {
+            caption-side: top;
+            border: 1px solid black;
+            width: 48%;
+            height: 50%;
+            position: fixed;
+            /* top: 25%;
+            left: 25%; */
+            /* border-collapse: collapse; */
+            /* border-spacing: 10px; */
+            /* background-image: url('tree2.png');
+            background-repeat: no-repeat;
+            background-size: cover; */
+            /* opacity:0.5; */
+            background: repeating-linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.8) 10%, green 10%, green 40%, rgba(255, 255, 0, 0.7) 40%, rgba(255, 255, 0, 0.8) 50%);
+            /* background: repeating-linear-gradient(135deg, red, rgb(255, 0, 0) 10%, green 10%, green 40%, rgba(255, 255, 0, 1) 40%, rgba(255, 255, 0, 1) 50%); */
+        }
+
+        /* #locate {
+            position: relative;
+            top: 50%;
+        } */
+
+        /* div {
+            width:500px;
+            height:500px;
+            background: repeating-linear-gradient(45deg, red, red 10%,  green 10%, green 40%, yellow 40%, yellow 50%);
+        } */
+
+
+        caption {
+            height: 30px;
+            color: beige;
+            background-color: darkgreen;
+        }
+
+        td {
+            /* border:1px solid black; */
+            text-align: center;
+            /* color:mediumspringgreen; */
+            color: brown;
+        }
+
+        nav>ul>li {
+            list-style-type: none;
+        }
+
+        nav>ul>li>a {
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+        }
+
+        nav>ul>li>a:hover {
+            color: red;
+        }
+
+        @keyframes jh1 {
+            from {
+                position:absolute;
+                left : 300px;
+                top: 200px;
+                width: 50px;
+                height: 50px;
+                background-image: url('snowflake.png');
+                background-size: contain;
+                
+            }
+
+            to {
+                width: 50px;
+                height: 50px;
+                background-image: url('snowflake.png');
+                background-size: contain;
+                transform: perspective(300px) rotate(360deg);
+                transform: translate(1000px, 700px);
+            }
+        }
+
+        @keyframes jh2 {
+            from {
+                position:absolute;
+                left : 600px;
+                top: 50px;
+                width: 50px;
+                height: 50px;
+                
+                background-image: url('snowflake.png');
+                background-size: contain;
+                
+            }
+
+            to {
+                width: 50px;
+                height: 50px;
+                background-image: url('snowflake.png');
+                background-size: contain;
+                transform: perspective(300px) rotate(360deg);
+                transform: translate(500px, 600px);
+            }
+        }
+
+        @keyframes jh3 {
+            from {
+                position:absolute;
+                left : 450px;
+                top: 100px;
+                width: 50px;
+                height: 50px;
+                background-image: url('snowflake.png');
+                background-size: contain;
+                
+            }
+
+            to {
+                width: 50px;
+                height: 50px;
+                background-image: url('snowflake.png');
+                background-size: contain;
+                transform: perspective(300px) rotate(360deg);
+                transform: translate(200px, 300px);
+            }
+        }
+
+        @keyframes jh4 {
+            from {
+                position:absolute;
+                left : 50px;
+                top: 100px;
+                width: 50px;
+                height: 50px;
+                background-image: url('snowflake.png');
+                background-size: contain;
+                
+            }
+
+            to {
+                width: 50px;
+                height: 50px;
+                background-image: url('snowflake.png');
+                background-size: contain;
+                transform: perspective(300px) rotate(280deg);
+                transform: translate(1500px, 800px);
+            }
+        }
+
+        /* @keyframes jh {
+            0% {
+                width: 50px;
+                height: 50px;
+            }
+
+
+            100% {
+                background-image: url('snowflake.png');
+                background-size: contain;
+                width: 50px;
+                height: 50px;
+                transform: perspective(250px) rotate(30deg);
+            }
+        } */
+
+        .divjh {
+            margin: 10px;
+            animation-name: jh1;
+            animation-duration: 5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+
+        .divjh2 {
+            margin: 10px;
+            animation-name: jh2;
+            animation-duration: 5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+        .divjh3 {
+            margin: 10px;
+            animation-name: jh4;
+            animation-duration: 5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+
+        .divjh4 {
+            margin: 10px;
+            animation-name: jh4;
+            animation-duration: 5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <header>
+    </header> -->
+    <div class="divjh"></div>
+    <div class="divjh2"></div>
+    <div class="divjh3"></div>
+    <div class="divjh4"></div>
+    <aside>
+        <ul>
+            <li>그룹 / </li>
+            <li>개인</li>
+        </ul>
+    </aside>
+    <section>
+        <table class="table">
+            <caption>메리크리스마스</caption>
+            <tr>
+                <!-- <th><span style="font-size:20pt">12 월</span></th> -->
+            </tr>
+            <tr>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+                <th>일</th>
+            </tr>
+            <tr>
+                <!-- <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td> -->
+                <td colspan="6"></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td style="background-color:gold; color:floralwhite">25
+
+                </td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>31</td>
+            </tr>
+
+        </table>
+    </section>
+    <aside>
+        <nav>
+            <h2>2018년 12월</h2>
+            <ul>
+                <li>
+                    <a href="detail.html">
+                        <br>
+                        12월 24일 (월)<br>
+                        크리스마스 이브
+                    </a>
+                </li>
+                <li>
+                    <a href="detail.html">
+                        <br>
+                        12월 25일 (화)<br>
+                        크리스마스
+                    </a>
+                </li>
+                <li>
+                    <a href="detail.html">
+                        <br>
+                        12월 26일 (수)<br>
+                        휴가
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+</body>
+
+</html>

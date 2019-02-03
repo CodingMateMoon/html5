@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>색상 변경</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        .box{
+            width:100px;
+            height:100px;
+            background-color:black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="div1"></div>
+    <input type="color" name="col1" value="#000000" />
+    <button id="but1">변경</button>
+
+    <h1>문제2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h1>
+    <div class="box" id="div2"></div>
+    <button id="but50" name="btnSize">50x50</button>
+    <button id="but100" name="btnSize">100x100</button>
+    <button id="but200" name="btnSize">200x200</button>
+    <script>
+        $(function () {
+            $("#but1").click(function () {
+                $("#div1").css("background-color", $("[name=col1]").val());
+            });
+
+            $("[name=btnSize]").each(function (index, item) {
+                // $(e).click(function(){
+                //     console.log("test");
+                // });
+                console.log($(item));
+                $(item).click(function () {
+                    // console.log(index);
+                    var width = 50 * (index + 1);
+                    var height = 50 * (index + 1);
+                    $("#div2").css({ "width": width, "height": height });
+                });
+            });
+        });
+    </script>
+
+    <h1>기본 문법 문제</h1>
+    <h2>텍스트 필드에 작성한 문자열 길이를 textarea에 출력</h2>
+    <fieldset>
+        <legend>보기</legend>
+
+        <input type="text" id="inputString" value="안녕하세요" placeholder="Test" size="200" />
+
+    </fieldset>
+    <textarea id="inputArea" rows="10" cols="200"></textarea><br>
+    <button id="btnBasic1">확인하기</button>
+
+    <script>
+        $("#btnBasic1").click(function () {
+            // $("#inputArea").html("test");
+            // $("#inputString").val($("#inputArea").html());
+            var s = $("#inputString").val();
+            var result = "보기의 문자열 길이는 " + s.length + "글자 입니다";
+            $("#inputArea").html(result);
+        });    
+    </script>
+
+    <h2>문자열을 ,를 기준으로 잘라내어 하나하나 출력</h2>
+    <fieldset>
+        <legend>보기</legend>
+        <p id="comma">콜라,사이다,햄버거,피자,한약</p>
+
+    </fieldset>
+    <textarea id="inputArea2" rows="10" cols="200"></textarea><br>
+    <button id="btnBasic2">확인하기</button>
+    <script>
+        $("#btnBasic2").click(function () {
+
+            var arr = $("#comma").html().split(",");
+            console.log(arr);
+            var result = "";
+            for (var i = 0; i < arr.length; i++) {
+                result += (i + 1) + "." + arr[i] + "\n";
+            }
+            $("#inputArea2").html(result);
+        });
+    </script>
+
+    <h1>배열 실습문제</h1>
+    <p>보기에 있는 데이터들을 배열로 받고 하나의 배열로 합치기, 입력 필드에 배열에 있는 데이터를 전송하면 배열의 alert를 통해 배열의 위치를 알려주고 없으면 "존재하지 않습니다" 메세지</p>
+    <fieldset>
+        <legend>보기</legend>
+        <p id="arrEx">
+        사과,바나나,당근<br>
+        김밥,치즈,떡볶이,햄버거<br>
+        환타,사이다,콜라<br>
+        고양이,강아지<br>
+        <p>
+
+    </fieldset>
+    <input type="text" id="arrExInput" placeholder="결과" size="100" />
+    <button id="btnBasic3">전송 및 처리</button>
+    <script>
+        $("#btnBasic3").click(function(){
+            console.log($("#arrEx").html());
+            // var arr = $("#arrEx").html().split(/,|<br>/);
+            var arr = $("#arrEx").html().split(/,|<br>/);
+            // var arr = $("#arrEx").html().split(/,/);
+            var search = $("#arrExInput").val();
+            for (var i = 0; i < arr.length; i++) {
+                var text = arr[i].trim();
+                arr[i] = text;
+                console.log(arr[i] + " : " + search);
+                if (arr[i] == search) {
+                    alert("배열" + (i + 1));
+                    return;
+                }
+                // console.arr[i];
+            }
+            alert("존재하지않습니다");
+            console.log(arr);
+            
+            
+        })
+    </script>
+
+</html>

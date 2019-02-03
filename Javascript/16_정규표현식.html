@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>정규표현식</title>
+    <!--
+    정규표현식 연습사이트 : https://regexr.com/
+    .x : 임의의 한문자 오라클 like '_x'와 비슷
+    [ac] : a | c
+    [^ac] : ac제외한 모든 문자
+    [a-z] : a부터 z까지
+    [A-Z]{4,}[0-9]+\^$ : A-Z까지 대문자 4개, 숫자 1개 이상, 끝에 ^가 나오는 경우
+    [A-Z]{4,}[0-9]*(\^$ | \# | \&)$
+
+    ^[A-Z][0-9]  : 첫글자가 대문자이고 숫자가 나옴, 
+    a\B : a 양 옆 중 공백이 없는 경우
+    a\b : a 양 옆 공백이 있는경우
+
+    \d : [0-9] , 0부터 9까지의 숫자인 경우
+    \D : [^0-9], 0부터 9까지의 숫자가 아닌 경우 (문자들이 선택됨)
+    \s : 공백(space, tab)인 경우
+    \t : tab인 경우
+    \w : 숫자, 문자, _(언더바)
+    [가-힣] : 한글
+    [ㄱ-힣] : 자음, 모음, 한글 모두 포함
+    ^[A-Z]/gm (multiline이어야 B부터 시작하는 문자도 찾을 수 있음)
+    Text : 
+    Abdklfk
+    Bsasfsd
+
+
+    Text
+    ---------------------
+    Abdklfk
+    Bsasfsd
+    aubc
+    bsdfsfd
+    acadv
+    dcccccadfv^
+    erercccbad
+    A1234^
+    B02038#
+    afadcvdfsdASDSC123213123^
+    arb
+    abcdb
+    abcdd
+    !ab
+    A1234^
+    B02038#
+    a df v df dsfsdaf a dfew
+    def a de ae wagfs a a 
+
+     -->
+</head>
+
+<body>
+    <div id="area"></div>
+    <button onclick="test()">실행</button>
+    <script>
+        function test() {
+            var doc = document.getElementById("area");
+            // JavaScript RegExp Reference : https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+            var reg = /script/; // 정규표현식 객체(RegExp)
+            // var reg = /[a-z]script/; // 정규표현식 객체(RegExp)
+            var reg2 = new RegExp("script");
+            /* 
+                test() : 해당하는 문자가 있니? 있으면 true 없으면 false
+                exec() : 해당하는 문자가 있니? 있으면 일치하는 문자, 없으면 null 리턴
+            */
+            var str = "jadf jquery Javascript ajax";
+            // var result = reg.exec(str);
+            var result = reg2.exec(str);
+            var result2 = reg.test(str);
+            doc.innerHTML = "<h2>" + result + "</h2>";
+            doc.innerHTML += "<h2>" + result2 + "</h2>";
+        }
+    </script>
+    <h3>대체문자 $&, &`, $'</h3>
+    <p>
+        대체문자 : 정규표현식으로 찾아낸 문자를 기준으로 replace()를 사용하여 문자를 바꿀 수 있는데 그 문자를 바꿀 때 사용할 수 있음
+    </p>
+    <div id="area2"></div>
+    <button onclick="test1()">실행</button>
+    <script>
+        function test1() {
+            var doc = document.getElementById("area2");
+            var reg = /as/;
+            var str = "javascript jquery ajax cass";
+            // var str = "javascript jquery ajax cass";
+            // $& : 찾은 as 문자에 대해 괄호 표시 (as)
+            // $` : 찾은 as 문자에 대한 앞글자를 가져와서 대체하고 괄호 표시
+            // $' : 찾은 as 문자에 대한 뒷글자를 가져와서 대체하고 괄호 표시
+            doc.innerHTML += "<h2>$& : " + str.replace(reg, '($&)') + "<h2>";
+            doc.innerHTML += "<h2>$` : " + str.replace(reg, '($`)') + "<h2>";
+            doc.innerHTML += "<h2>&' : " + str.replace(reg, "($')") + "<h2>";
+        }
+    </script>
+    <h2>플래그 문자</h2>
+    <p>
+        g : 문자열 전역을 비교하여 찾는 것 
+        i : 대소문자 구별없이 찾는 것 
+        m : 멀티라인 개행 시(Enter) 다시 시작
+        
+    </p>
+    <div id="area3"></div>
+    <button onclick="test3()">실행</button>
+    <script>
+        function test3() {
+            var doc = document.getElementById("area3");
+            var reg = /j/g; // 플래그 문자 : /정규표현식/gim
+            var str = "javascript shellscript typescript jquery ajax";
+            doc.innerHTML += "<h2>" + str.replace(reg,'($&)') + "<h2>";
+            var str2="Javascript shellscript typescript jquery aJax";
+            var reg2 = /j/gi;
+            doc.innerHTML += "<h2>" + str2.replace(reg2,'($&)') + "<h2>";
+            var str3 = "JavaScript\nShellScript\njquery\nJava\nJaemin";
+            // var reg3 = /^j/gi;
+            var reg3 = /^j/gim; // 플래그 m : multiline 추가할 경우 다른 라인에 있는 j에도 괄호 적용
+            doc.innerHTML += "<h2>" + str3.replace(reg3,'($&)') + "<h2>";
+            
+        }
+    </script>
+    <h3>임의의 글자 . </h3>
+    <div id = "area4"></div>
+    <button onclick="test4()">실행</button>
+    <script>
+        function test4(){
+            var doc = document.getElementById("area4");
+            var reg = /a.b/g; // a와 b사이에 한글자 존재 ex) aEb, aUb
+            doc.innerHTML += reg.test('a아아아아b') + "<br>";
+            doc.innerHTML += reg.exec('aab') + "<br>";
+            doc.innerHTML += reg.test('abb') + "<br>";
+            doc.innerHTML += reg.test('a아b') + "<br>";
+            doc.innerHTML += reg.test('a아아baa') + "<br>";
+            doc.innerHTML += reg.test('a아baaa') + "<br><br>";
+            reg = /bs.$/g;
+            doc.innerHTML += reg.test('bsy') + "<br>";
+            doc.innerHTML += reg.test('ybs') + "<br>";
+            doc.innerHTML += reg.test('bstt') + "<br>";
+        }
+
+        // str 5개에 대해 각 결과값 만족하는 정규표현식 만들기
+        reg = /(..\.)/;
+        str1 = 'O.K.';
+        console.log(reg.test(str1)); //  =>true
+        str2 = 'K.O.R.E.A';
+        // reg = /([A-Z]\.){5}/;
+        console.log(reg.test(str2)); //  =>true
+        str3 = "겨울하늘이 춥다.";
+        console.log(reg.test(str3)); //  =>true
+        str4 = "99.9";
+        console.log(reg.test(str4)); //  =>true
+        str5 = "0.90";
+        console.log(reg.test(str5)); //  =>false
+    </script>
+</body>
+
+</html>

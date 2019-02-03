@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>변수선언/scope</title>
+    <script>
+
+        // var stt;
+        // console.log(stt);
+        // console.log(str);
+
+        // console.log(str);
+        // console.log(num);
+
+        // var str = "유병승"; // 전역변수
+        // num = 19; // 변수선언 권장하지 안음!
+        // // {
+        // //     var str1 = "신재민"; // 전역변수
+        // //     num1 = 26; // 전역변수선언 권장하지 안음!
+        // // }
+
+        // function test(){
+        //     var str1= "신재민";
+        //     num1=26; // 전역변수 선언
+        // }
+        // test();
+        // console.log(str);
+        // console.log(num);
+        // console.log(num1); // 전역변수라서 남아있음
+
+    </script>
+</head>
+
+<body>
+    <script>
+        // alert(str);
+        // alert(num);
+        // alert(num1);
+        // alert(str1);
+    </script>
+
+    <script>
+        // 전역변수 : function 내부가 아닌 곳에 변수를 선언하면 전역변수가 됨.
+        // function 내부에서 var를 쓰지않고 선언하면 그것도 전역변수
+        nickname = "호빵맨";
+        var cookie = "에어라이트";
+        function local() {
+            var test = "abc"; // 지역
+            test1 = 'def'; // 전역변수
+            console.log(cookie);
+        }
+        local();
+        // console.log(test);
+        console.log(window.test1);
+        // boolean
+        var b = true;
+        var b1 = false;
+        // 객체
+        var obj = { "name": "유병승", "age": 19 };
+        // function 함수
+        var func = function() {
+            alert("이거 실행?");
+        }
+        // func();
+        // var b = func();
+        // b(); // boolean -> 함수로 형변환, 들어가는 값에 따라 유동적으로 자료형 변경
+        // 호이스팅 : 선언된 변수를 먼저 호출할 수 있는 것, 선언된 변수명을 먼저 저장하여 선언된 코드를 해석하기 전에 읽을 수 있는 것, var 변수명 있는것만 올라감
+        // 선언부만 미리 가지고 있을 때 log함수를 호출할 경우 값이 들어있지 않아서 undefined를 출력
+        hoist="야";
+        console.log(hoist);
+        console.log(hoist2);
+        var hoist = 100;
+        hoist2 = 19;
+        console.log(hoist);
+        // 선언부와 대입부로 나눔!
+        // 선언부는 미리 가지고 있다/
+        // 대입부는 자바스크립트 엔진이 한줄 한줄 읽어가며 해석할 때 적용
+
+    </script>
+</body>
+
+</html>

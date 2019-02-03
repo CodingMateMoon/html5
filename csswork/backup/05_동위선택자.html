@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>동위선택자</title>
+</head>
+<body>
+    <div>
+        <p id='first'>난 피야</p>
+        <p>난 피2번이야</p>
+        <h1>난 h1이야</h1>
+        <input type="text" name="name">
+        <p>난 피3번이야</p>
+        <h1>난 h1 2번이야</h1>
+        <p id='second'>난 피4번이야</p>
+        <p>난 피5번이야</p>
+        <div>
+            <p>난 div안에 피야</p>
+        </div>
+    </div>
+    <style>
+        
+        #first+*{
+            background-color:crimson;
+        }
+        /* 선택자 + 선택자 : 선택자 바로 뒤 지정한 선택자에 적용 (second -> p) (+, ~ 모두 같은 위치에 있어야함)*/
+        #second+p{
+            background-color:lavender;
+        }
+        
+        /* 선택자 ~ 선택자 : 선택자 및에 지정한 모든 선택자들에 적용 (div는 다른 위치이므로 적용안됨)*/
+        #first~h1{
+            background-color:turquoise;
+        }
+
+        #first~p{
+            background-color:lightcyan;
+        }
+
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        .toggle {
+            border: 1px solid yellow;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="area"></div>
+
+    <button onclick="imageChangeStart()">사진전환</button>
+    <button onclick="SpeedUp()">속도증가</button>
+    <button onclick="SpeedDown()">속도감소</button>
+    <button onclick="imageAdd()">사진추가</button>
+    <button onclick="imageBorder()" id="toggle">Border 변경</button>
+   
+    <script>
+       
+        var srcArray = ["https://cdn.pixabay.com/photo/2018/12/15/02/53/flower-3876195_960_720.jpg", "https://s-i.huffpost.com/gen/4127522/thumbs/o-THE-570.jpg?7", "http://attach.s.op.gg/forum/20171205102009_982656.png"];
+
+        // $(function () {
+        //     $("#toggle").on("click", function () {
+        //         $("img").toggleClass(function () {
+        //             return "toggle";
+        //         });
+        //     })
+        // });
+
+        var image1 = $('<img>').attr({ "src": srcArray[0], "width": "300px", "height": "300px" });
+        // border-radius:100px
+        var image2 = $('<img>').attr({ "src": srcArray[1], "width": "300px", "height": "300px" });
+        var image3 = $('<img>').attr({ "src": "http://attach.s.op.gg/forum/20171205102009_982656.png", "width": "300px", "height": "300px" });
+        // console.log(image1);
+        $("#area").append(image1);
+        $("#area").append(image2);
+        $("#area").append(image3);
+        var time = 1000;
+        function imageChangeStart() {
+            // $("#area").prepend($("h3"));
+            console.log($("img"));
+            console.log($("img")[0]);
+            // time /= 2;
+            inter = setInterval(function () {
+                // $("#area").prepend($("img").last());
+                var image = $("img");
+                $("#area").prepend(image[image.length - 1]);
+            }, time);
+        }
+
+        function SpeedUp(){
+            time /= 2;
+            clearInterval(inter);
+            inter = setInterval(function () {
+                // $("#area").prepend($("img").last());
+                var image = $("img");
+                $("#area").prepend(image[image.length - 1]);
+            }, time);
+        }
+
+        function SpeedDown(){
+            time *= 2;
+            clearInterval(inter);
+            inter = setInterval(function () {
+                // $("#area").prepend($("img").last());
+                var image = $("img");
+                $("#area").prepend(image[image.length - 1]);
+            }, time);
+        }
+        // "width":"300px", "height":"300px", "style":"border:1px solid yellow;border-radius:50px;"
+
+        function imageAdd() {
+            var src = prompt("이미지 경로 입력");
+
+            $("#area").after($("<img>").attr({ "src": src, "width": "300px", "height": "300px" }));
+            // $("img").attr("border-radius","50px");
+            var inter = setInterval(function () {
+                $("#area").prepend($("img").last());
+            }, 1000);
+        }
+
+        var flag = true;
+        function imageBorder() {
+            // $("img").toggleClass(function(){
+            //     return "toggle";
+            // });
+            if (flag) {
+                $("img").attr("style","border:1px solid blue;border-radius:50px");
+                flag = false;
+            } else {
+                $("img").removeAttr("style");
+                flag = true;
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

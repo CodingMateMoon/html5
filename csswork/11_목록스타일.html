@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>목록스타일 태그</title>
+    <style>
+        #disc {
+            list-style-type: none;
+            /* list-style-image: url("hobbang2.png"); */
+        }
+
+        #menu {
+            list-style-type: none;
+            background-color: black;
+            height: 50px;
+            padding-top: 10px;
+        }
+
+        #menu>li {
+            display: inline;
+            margin-left: 10px;
+            /* margin-top: 5px; */
+            border: 2px solid rebeccapurple;
+
+        }
+
+        #menu>li>a {
+            text-decoration: none;
+
+            /* margin-left:10px; */
+            color: khaki;
+            font-size: 20px;
+            font-weight: bolder;
+            /* border:1px solid white; */
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="disc">
+        <li>신재민</li>
+        <li>이일교</li>
+        <li>박진우</li>
+        <li>한솔</li>
+    </ul>
+    <ul id="menu">
+        <li><a href="http://iei.or.kr">학원홈페이지</a></li>
+        <li><a href="http://www.youtube.com">유투브</a></li>
+        <li><a href="http://www.w3schools.com">프론트엔드 프로그래밍</a></li>
+        <li><a href="http://tomcat.apache.org" target="_blank">서버 프로그래밍</a></li>
+
+    </ul>
+    <!-- <img src="hobbang2.png"/> -->
+
+    <ul id='image'>
+        <li>신재민</li>
+        <li>박진우</li>
+        <li>이일교</li>
+        <li>한솔</li>
+    </ul>
+    <ul id='image2'>
+        <li>신재민</li>
+        <li>박진우</li>
+        <li>이일교</li>
+        <li>한솔</li>
+    </ul>
+    <style>
+        #image {
+            list-style-image: url("hobbang2.png");
+            list-style-position: inside;
+        }
+
+        #image2 {
+            list-style-image: url("hobbang2.png");
+            list-style-position: outside;
+        }
+    </style>
+</body>
+
+</html>

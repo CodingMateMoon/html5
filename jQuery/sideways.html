@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>형제찾기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        .wrap,
+        .wrap * {
+            display: block;
+            border: 1px solid lightblue;
+            padding: 5px;
+            margin: 15px;
+        }
+        span {
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>형제찾기</h3>
+    <div class="wrap">
+        <p>p</p>
+        <span>span1</span>
+        <span>span2</span>
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <p>p2</p>
+        <p>div bro
+            <span>span3</span>
+        </p>
+        <table border=1>
+            <tr>
+                <td>여기!</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(function () {
+
+            var elements = $('span').next();
+            console.log(elements);
+            for (var i = 0; i < elements.length; i++) {
+                console.log(elements[i].innerHTML);
+            }
+            console.log($('h1').nextAll());
+            // 자식은 상위 객체의 속성 상속 받음
+            $('h1').nextAll().css("background-color", "green");
+            console.log($("h2").siblings("p"));
+            // $("h2").siblings("p").css("background-color","lightpink");
+            $("h2").siblings("*").css("background-color","lightpink");
+            // $('span').next().html("span! bro!");
+            // nextUntil : 선택된 요소~ 같은 레벨(형제)들 중 인자 사이 요소 ex)h1 ~ table 사이에 있는 요소 (h1, table 제외)
+            $("h1").nextUntil("table").css("background-color", "hotpink");
+            // console.log($("table").prevAll().is("h5")); // false
+            console.log($("table").prevAll().is("p")); // true
+
+            if ($('span').next().is("h1")) {
+                $('span').next('h1').html("이제 쉬는시간");
+            }
+        });
+    </script>
+</body>
+
+</html>

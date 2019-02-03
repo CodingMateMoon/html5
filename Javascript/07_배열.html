@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>배열 처리</title>
+</head>
+
+<body>
+
+    <h1>배열 선언하기</h1>
+    <script>
+        var arr = new Array();
+        var arr2 = [];
+        arr[0] = "김지섭";
+        arr[1] = "이영우";
+        arr[10] = "신재민";
+
+        arr2[0] = 'test';
+        arr2[1] = 19;
+        arr2[5] = "hahaha";
+        console.log("arr : " + arr.length);
+        console.log("arr2 : " + arr2.length);
+        console.log(arr[4]);
+
+        for (v in arr) {
+            console.log(arr[v]);
+        }
+        console.log("v : " + v);
+
+        for (var v in arr2) {
+            console.log(arr2[v]);
+        }
+
+        // 선언과 동시에 초기화
+        var arr3 = ['유병승', 19, true, function () { alert("배열안 함수") }, { 'item': '테란', 'gender': '프로토스' }];
+
+        for (var i = 0; i < arr3.length; i++) {
+
+            console.log(arr3[i]);
+            // if (typeof(arr3[i]) == 'function') {
+            //     arr3[i]();
+            // }
+            // if (typeof(arr3[i] == 'object')) {
+            //     for (var v in arr3[i]) {
+            //         console.log(arr3[i][v]);
+            //     }
+            // }   
+        }
+        arr3[3]();
+        for (var key in arr3[4]) {
+            console.log(arr3[4][key]);
+        }
+        // 이해안되면 패스하세요~!
+        arr3['haha'] = "이제끝!~";
+        console.log(arr3);
+        console.log(arr3.length);
+        console.log(arr3['haha']);
+
+    </script>
+    <h1>배열메소드 활용하기</h1>
+    <h3>indexOf : 배열에서 요소가 위치한 인덱스 번호를 리턴</h3>
+    <div id="area"></div>
+    <button onclick="indexOfTest()">실행</button>
+    <script>
+        function indexOfTest() {
+            var doc = document.getElementById("area");
+            var arr1 = ["딸기", "포도", "참외", "수박", "바나나", "복숭아"];
+            doc.innerHTML += arr1 + "<br>";
+            doc.innerHTML += "수박 : " + arr1.indexOf("수박") + "<br>";
+        }
+    </script>
+    <h3>concat() : 배열을 합치는것</h3>
+    <div id='area2'></div>
+    <button onclick="concatTest()">concat()</button>
+    <script>
+        function concatTest() {
+            var doc = document.getElementById("area2");
+            var arr1 = ['사슴', '강아지', '고슴도치', '햄스터'];
+            var arr2 = ['소나무', '스투키', '산새베리아', '산삼'];
+            var arr3 = ['로또1등', '건강', '금연', '적일많돈', '이성친구'];
+            var to12 = arr1.concat(arr2);
+            doc.innerHTML += to12 + "<br>";
+            doc.innerHTML += arr1 + "<br>";
+            doc.innerHTML += arr2 + "<br>";
+            var to12 = arr1.concat(arr2, arr3);
+            doc.innerHTML += to12 + "<br>";
+        }
+    </script>
+    <h3>join : 배열을 문자열로 반환해주는 함수</h3>
+    <div id="area3"></div>
+    <button onclick="joinTest()">join([separator])</button>
+    <script>
+        function joinTest() {
+            var dino = ["티라노", "알로사우르스", "벨로키랍토르", "양추아노사우르스", "부경고사우르스"];
+            var result = dino.join();
+            var doc = document.getElementById("area3");
+            doc.innerHTML += result + typeof (result) + "<br>";
+            console.log(typeof (result));
+            result = dino.join("^.~");
+            doc.innerHTML += result + typeof (result) + "<br>";
+        }
+    </script>
+    <h3>sort : 내림차순이나 오름차순 정렬</h3>
+    <div id="area4"></div>
+    <button onclick="sortTest()">실행</button>
+    <script>
+        function sortTest() {
+            var doc = document.getElementById("area4");
+            var arr = [5, 2, 6, 3, 1, 8, 4];
+            doc.innerHTML += "기본정렬 : " + arr.sort() + "<br>";
+            doc.innerHTML += "사용자정렬 : " + arr.sort(function (left, right) {
+                // return left - right; // 오름차순 정렬
+                return right - left;
+            }) + "<br>";
+
+            doc.innerHTML += "내림차순정렬 : " + arr.sort(cusSort) + "<br>"
+        }
+
+        function cusSort(left, right) {
+            return right - left;
+        }
+    </script>
+
+    <h1>배열의 데이터를 변경하는 함수</h1>
+    <h3>
+        push() : 배열의 맨뒤에 값을 추가<br>
+        pop() : 배열의 맨뒤값을 제거
+    </h3>
+
+    <div id="area5"></div>
+    <button onclick="test1()">push&pop</button>
+    <script>
+        function test1() {
+            var doc = document.getElementById("area5");
+            var arr = ["성난황소", "창궐", "아쿠아맨", "미스백"];
+            doc.innerHTML += "arr : " + arr + " 길이 : " + arr.length + "<br>";
+            // arr[arr.length - 1] = "호두까기인형";
+            arr.push("호두까기인형");
+            arr.push("보헤미안랩소디");
+            doc.innerHTML += "After push() : " + arr + " 길이 : " + arr.length + "<br>";
+            arr.pop();
+            arr.pop();
+            arr.pop();
+            doc.innerHTML += "After pop() : " + arr + " 길이 : " + arr.length + "<br>";
+            arr.shift();
+            doc.innerHTML += "After shift() : " + arr + " 길이 : " + arr.length + "<br>";
+            arr.unshift("불한당");
+            doc.innerHTML += "After unshift() : " + arr + " 길이 : " + arr.length + "<br>";
+        }
+    </script>
+    <h3>
+        slice(index1, index2) : 배열의 요소를 선택해서 새 배열로 만드는것<br>
+        splice(startidx, deletecount, value) : 배열의 index 위치의 요소를 제거 및 추가
+    </h3>
+    <div id="area6"></div>
+    <button onclick="test2()">arr.slice([begin[, end]])</button>
+    <script>
+        function test2() {
+            var doc = document.getElementById("area6");
+            var arr = ["자바", "오라클", "html", "css", "javascript"];
+            doc.innerHTML += "arr : " + arr + "<br>";
+            var arr2 = arr.slice(1, 3);
+            doc.innerHTML += "arr.slice(1, 3) : " + arr2 + "<br>";
+            doc.innerHTML += "arr.slice(2, 4) : " + arr.slice(2, 4) + "<br>";
+            // doc.innerHTML += "삭제(splice target) : " + arr.splice(2, 2) + "<br>";
+            doc.innerHTML += "afterSplice : " + arr + "<br>";
+            doc.innerHTML += "arr삭제 후 추가 : " + arr.splice(2, 2, "jsp&servlet", 'jstl', 'mybatis', 'spring') + "<br>";
+            doc.innerHTML += "afterSplice : " + arr + "<br>";
+        }
+    </script>
+    <!--
+        배열 이용 문제 풀기
+        1. 먹방리스트를 작성
+        조건 : 사용자에게 3개를 입력받아 배열을 작성
+        2. 먹방리스트 중 사용자가 원하는 음식을 검색하고 index를 통해 조회할 것
+        3. 배열을 한 개 문자로 출력 구분자는 (0..0!)
+        4. 등록된 음식 중 하나를 선택하고 음식을 입력하면 음식을 그 위치에 등록할 것
+
+    -->
+    <br>
+    <input class="eat" type="text" placeholder="음식1" />
+    <input class="eat" type="text" placeholder="음식2" />
+    <input class="eat" type="text" placeholder="음식3" />
+    <br>
+
+    <input id="search" type="text" placeholder="원하는 음식" />
+    <button onclick="searchFood()">검색</button>
+    <div id="print"></div>
+    <script>
+        function searchFood() {
+            var inputs = document.getElementsByClassName("eat");
+            var list = [];
+            for (var i = 0; i < inputs.length; i++) {
+                list.push(inputs[i].value);
+            }
+            var wantFood = document.getElementById("search").value;
+            var index = list.indexOf(wantFood);
+            var doc = document.getElementById("print");
+            // doc.innerHTML = 
+            console.log(list.join());
+
+            doc.innerHTML += "index : " + index + " 원하는 음식 : " + list[index];
+        }
+    </script>
+
+    <div id="result"></div>
+    <button onclick="test3()">먹방</button>
+    <script>
+        function test3() {
+            var doc = document.getElementById("result");
+            var input = prompt("먹거리입력(여러개값이면 ,로 구분)");
+            var list = input.split(","); // 배열로 보관
+            console.log(typeof (list) + " list : " + list);
+            doc.innerHTML += "먹거리 : " + list + "<br>";
+            var input2 = prompt("찾을음식");
+            doc.innerHTML += "인덱스 : " + list.indexOf(input2) + " 음식명 : " + list[list.indexOf(input2)] + "<br>";
+            doc.innerHTML += "한개문자로 : " + list.join("0..0!") + "<br>";
+            // doc.innerHTML += list.splice(list.indexOf(prompt("기준음식")), 0, prompt("넣을 음식")) + "<br>";
+            // 해당 인덱스 위치에 0개 요소를 삭제하고(지우지않고) 넣을음식으로 받은 데이터 삽입
+            console.log("after splice : " + list.splice(list.indexOf(prompt("기준음식")), 0, prompt("넣을 음식")));
+            doc.innerHTML += list + "<br>";
+            
+        }
+
+        // reverse() : 뒤집기!
+        var ar = ['a', 'b', 'c', 'd', 'e', 'f'];
+        var ar2 = ['가', '나', '다', '라'];
+        ar.reverse();
+        // ar2.reverse();
+        console.log(ar);
+        console.log(ar.toString());
+        console.log(ar2.toString());
+        document.getElementById("result").innerHTML += ar2.reverse();
+
+    </script>
+
+
+</body>
+
+</html>

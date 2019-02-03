@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Study Note</title>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+    <style>
+        /* font-family: 'Do Hyeon', sans-serif; */
+        header {
+            width: 100%;
+            height: 60px;
+            background-color: chartreuse;
+            /* border-radius: 50px; */
+        }
+
+        #logo {
+            /* position:absolute; */
+            /* left: 5%; */
+            float:left;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 30px;
+            margin-top : 1%;
+            margin-left : 2%;
+            color:yellow;
+        }
+
+        #logo:hover {
+            color:salmon;
+        }
+
+        #menu {
+            float: left;
+
+            margin-left: 17%;
+            /* position:relative; */
+            /* left: 25%; */
+        }
+
+        #menu>ul {}
+
+        #menu>ul>li {
+            /* position: relative; */
+            width: 100px;
+            height: 30px;
+            display: inline-block;
+            /* display:inline; */
+            margin-right: 30px;
+            text-align: center;
+            /* color:greenyellow; */
+            border: 1px solid #1DDB16;
+            background-color: rgb(0, 252, 0);
+            /* border-radius: 10px; */
+        }
+
+        #menu>ul>li>a {
+            text-decoration: none;
+            color: lemonchiffon;
+
+            font-family: 'Abril Fatface', sans-serif;
+            /* font-weight: 600; */
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #menu>ul>li>ul {
+            opacity: 0;
+            width: 100px;
+            list-style-type: none;
+            position: absolute;
+            /*left로 옮기지 않으면 투명화로 안보이더라도 커서를 갖다댄 순간 hover로 동작*/
+            /* left: 0; */
+            margin: 0;
+            padding: 0;
+            background-color: rgba(128, 255, 0, 0.5);
+        }
+
+        #menu>ul>li>ul>li {
+            float: none;
+            position: static;
+            height:0;
+            line-height:0;
+            background: none;
+        }
+
+        #menu>ul>li:hover {
+            border-radius: 30px;
+        }
+
+        #menu>ul>li:hover>ul {
+            opacity: 1;
+        }
+
+        #menu>ul>li:hover>ul>li {
+            /* height:30px;
+            line-height:30px; */
+            
+            height:auto;
+            /* 줄높이 글자 크기의 2배 */
+            line-height: 2;
+        }
+
+
+
+        #menu>ul>li>ul>li:hover {
+            background-color: rgba(0, 252, 0, 0.603);
+
+        }
+
+        #menu>ul>li>ul>li:hover a {
+            color: white;
+        }
+
+
+
+        /* #menu ul>li a {
+            transition: all 0.5s;
+        } */
+
+        /* #menu>ul>li>ul>li {
+            float:none;
+            position:static;
+            height:0;
+            line-height: 0;
+            background:none;
+        } */
+
+        #menu>ul>li>ul>li>a {
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 15px;
+            color: royalblue;
+            /* color:rgb(0, 252, 0); */
+        }
+
+        #showBut {
+            margin-top:20px;
+            /* float: left; */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="logo" onclick="init()">JH</div>
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Oracle</a>
+                    <ul>
+                        <li><a href="#" onclick="init()">DDL</a></li>
+                        <li><a href="#">DML</a></li>
+                        <li><a href="#">Function</a></li>
+                        <li><a href="#">GroubBy<br>&Having</a></li>
+                        <li><a href="#">Join</a></li>
+                        <li><a href="#">Subquery</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">HTML</a>
+                    <ul>
+                        <li><a href="HTML/01_head_meta.html" target="sub">Header</a></li>
+                        <li><a href="#" onclick="changeIframeUrl('HTML/02_textTag.html')">TextTag</a></li>
+                        <li><a href="#" onclick="changeIframeUrl('HTML/03_form.html')">Form</a></li>
+                        <li><a href="#" onclick="changeIframeUrl('HTML/04_table.html')">Table</a></li>
+                        <li><a href="#" onclick="changeIframeUrl('HTML/05_layout.html')">Layout</a></li>
+                        <li><a href="#" onclick="changeIframeUrl('HTML/06_multimedia.html')">Multimedia</a></li>
+                        <li><a href="#" onclick="changeIframeUrl('HTML/07_hypertext.html')">Hypertext</a></li>
+                        <li><a href="#" onclick="changeIframeUrl('HTML/08_form.html')">Form</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">CSS</a>
+                    <ul>
+                        <li><a href="#">텍스트스타일</a></li>
+                        <li><a href="#">색상스타일</a></li>
+                        <li><a href="#">레이아웃</a></li>
+                        <li><a href="#">애니메이션</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Javascript</a>
+                    <ul>
+                        <li><a href="#">개요</a></li>
+                        <li><a href="#">기본문법</a></li>
+                        <li><a href="#">배열</a></li>
+                        <li><a href="#">함수</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">JSP</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <pre id="preview">텍스트 파일 내용 출력 영역</pre>
+        <input type="file" id="getFile">
+        <div>
+            <!-- <button id="showBut" onclick="showSource()" style="width:200px; height:30px">소스 보기</button> -->
+            <iframe width="100%" height="480px" src="HTML/02_textTag.html" name="sub" id="subIframe"></iframe>
+        </div>
+
+    </section>
+    <script>
+        var subIframe = document.getElementById("subIframe");
+
+        function showSource() {
+        }
+        var file = document.querySelector("#getFile");
+        file.onchange = function () {
+            var fileList = file.files;
+            var reader = new FileReader();
+            reader.readAsText(fileList[0]);
+
+            reader.onload = function () {
+                document.querySelector("#preview").textContent = reader.result;
+            }
+        }
+
+        function changeIframeUrl(url) {
+            if (subIframe.style.visibility === 'hidden') {
+                subIframe.style.visibility = "visible";
+            }
+
+            document.getElementById("subIframe").src = url;
+        }
+
+        function init() {
+
+            // subIframe.style = "visibility:hidden;";
+            if (subIframe.style.visibility === "visible") {
+                subIframe.style.visibility = "hidden";
+                console.log("hidden : " + subIframe.style.visibility);
+            } else {
+                subIframe.style.visibility = "visible";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

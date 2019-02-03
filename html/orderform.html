@@ -1,0 +1,32 @@
+<form action="" method="get">
+<label for="id">고객명:</label>
+<input type="text" name="id" id="id" />
+<br>
+<label for="phone">전화번호:</label>
+<input type="tel" name="phone" id="phone" />
+<br>
+<label for="email">이메일:</label>
+<input type="email" name="email" id="email" />
+
+<fieldset>
+    <legend>피자사이즈</legend>
+    <input type="radio" name="pizza" id="pz1" value="Small"  /> Small <br>
+    <input type="radio" name="pizza" id="pz2" value="Medium"  /> Medium <br>
+    <input type="radio" name="pizza" id="pz3" value="Large"  /> Large <br>
+</fieldset>
+<fieldset>
+        <legend>토핑선택</legend>
+        <input type="radio" name="toping" id="tp1" value="bacon"/> 베이컨<br>
+        <input type="radio" name="toping" id="tp2" value="cheeze"/> 치즈<br>
+        <input type="radio" name="toping" id="tp3" value="onion"/> 양파<br>
+        <input type="radio" name="toping" id="tp4" value="mushroom"/> 버섯<br>
+</fieldset>
+<label for="delivery">희망배송시간:</label>
+<input type="time" name="delivery" id="delivery"/> <br>
+<label for="request">배송시요청사항:</label>
+<textarea name="request" cols="50" rows=3" style="resize:none">
+</textarea>
+
+<input type="submit" value="주문하기" />
+<input type="reset" value="취소" />
+</form>

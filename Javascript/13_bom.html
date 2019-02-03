@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOM</title>
+</head>
+<body>
+    <h1>screen 객체</h1>
+    <p>
+        screen 웹브라우저 화면이 아닌 운영체제 화면의 속성을 가지는 객체        
+    </p>
+    <div id="area"></div>
+    <button onclick="test()">실행</button>
+    <script>
+        function test() {
+            var doc = document.getElementById("area");
+            for (var key in screen) {
+                console.log(key + " : " + screen[key]);
+            }
+        }
+    </script>
+    <style>
+        p {
+            cursor: pointer;
+        }
+    </style>
+
+    <h1>location객체 활용</h1>
+    <button onclick="test2()">실행</button>
+    <button onclick="assignTest()">assignTest() 페이지이동</button>
+    <button onclick="location.assign('http://www.daum.net')"> assign ver2</button>
+    <button onclick="reloadTest()">reloadTest()</button>
+    <button onclick="replaceTest()">replaceTest()</button>
+    <p onclick="location.href='http://www.naver.com'">
+        M씨가 좋아하는 p태그!
+    </p>
+    <h1 onclick="makeText()">Test</h1>
+    
+    <script>
+        function test2() {
+            console.log("test2!")
+            /*
+            reload : [F5] 새로고침
+            replace : 변경, history 없음
+            assign : 변경, history 남김
+            
+            */
+            for (var key in location) {
+                console.log(key + " : " + location[key]);
+            }
+        }
+
+        function assignTest() {
+            location.assign("http://iei.or.kr");
+            // location.replace("http://iei.or.kr");
+        }
+
+        function reloatTest() {
+            location.reload();
+        }
+
+        function replaceTest(){
+            location.replace("http://iei.or.kr");
+        }
+
+        function makeText() {
+            document.getElementsByTagName('h1')[0].innerHTML += 'makeText!! haha';
+        }
+    </script>
+
+    <p>navigator 브라우저에 대한 정보를 가지고 있는 객체</p>
+    <div id="area1"></div>
+    <button onclick="test3()">실행</button>
+    <script>
+        function test3() {
+            var doc = document.getElementById("area1");
+            for (var key in navigator) {
+                doc.innerHTML += key + " : " + navigator[key] + "<br>";
+            }
+        }
+    </script>
+
+</body>
+</html>

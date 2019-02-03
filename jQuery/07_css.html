@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>스타일 속성변경하기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        * {
+            /* color : la */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>231231</li>
+        <li>223</li>
+        <li>3213</li>
+        <li>46677</li>
+        <li>56767</li>
+    </ul>
+    <button onclick="changeCss()">스타일 변경</button>
+    <script>
+        function changeCss(){
+            $("li").css("color", "green");
+            // console.log($("li").css("display"));
+            $("li").css("display", "inline");
+            $("li").css("background-color", function(index, value){
+                switch(index) {
+                    case 0: return "yellowgreen";
+                    case 1: return "hotpink";
+                    case 2: return "cyan";
+                    case 3: return "lavender";
+                    case 4: return "tomato";
+                }
+            });
+            $("li").css({"font-size": "30px", "font-weight" :"bolder", "word-spacing": "100px"});
+        }
+    </script>
+    <style>
+        p {
+        }
+    
+    </style>
+</body>
+</html>

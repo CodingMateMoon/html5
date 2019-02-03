@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>테이블 만들기</title>
+</head>
+
+<body>
+    <button onclick="test()">기본테이블 생성</button>
+    <button onclick="test1()">입력받은 테이블 생성</button>
+    <div id="table1"></div>
+    <script>
+        function test1() {
+            var row = prompt("몇 행?");
+            var col = prompt("몇 열?");
+            var area = document.getElementById("table1");
+            var ta = document.createElement("table");
+            var table = document.createElement("table");
+            for (var i = 0; i < row; i++) { // tr
+                var tr = document.createElement("tr");
+                for (var k = 0; k < col; k++) { // td
+                    var td = document.createElement("td");
+                    var text = document.createTextNode(i + "행 " + (k) + "열" + (k + i * col));
+                    td.setAttribute("id",(k + i * col) +"");
+                    var btn = document.createElement("button");
+                    var bText = document.createTextNode("실행");
+                    btn.appendChild(bText);
+                    
+                    btn.addEventListener("click", function(e){
+                        // alert("클릭! 야후~");
+                        console.log(e);
+                        console.log(e.target.parentNode.getAttribute("id"));
+                        console.log(e.target.parentNode);
+                        e.target.parentNode.style.backgroundColor="blue";
+                        var btr = document.createElement("tr");
+                        var id = e.target.parentNode.getAttribute("id");
+                        for (var l = 0; l < id / col; l++) {
+                            var btd = document.createElement("td");
+                            var btext = document.createTextNode(id);
+                            btd.appendChild(btext);
+                            btr.appendChild(btd);
+                        }
+                        ta.appendChild(btr);
+                    })
+                    td.appendChild(btn);
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+                ta.appendChild(tr);
+            }
+            ta.setAttribute("border", "1");
+            // table.setAttribute("border", "1");
+            area.appendChild(ta);
+            // area.appendChild(table);
+        }
+
+        function test() {
+            var area = document.getElementById("table1");
+            var ta = document.createElement("table");
+            for (var i = 0; i < 5; i++) { // tr
+                var tr = document.createElement("tr");
+                for (var k = 0; k < 5; k++) { // td
+                    var td = document.createElement("td");
+                    var text = document.createTextNode(k);
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+                ta.appendChild(tr);
+            }
+            ta.setAttribute("border", "1");
+            area.appendChild(ta);
+        }
+    </script>
+</body>
+
+</html>

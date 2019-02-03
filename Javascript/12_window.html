@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>윈도우객체활용</title>
+    <style>
+        body {
+            width:6000px;
+        }
+    </style>
+</head>
+<body>
+    <h3>open()</h3>
+    <p>
+        open(url, 이름/여는방식, 형태)
+        url : 새창에서 오픈할 페이지 주소
+        이름 : 열린 새창의 이름, 여는 방식(_blank, _self)
+        형태 : 열린 새창의 크기, 위치, 메뉴 등 조정
+    </p>
+    <button onclick="basicOpen();">기본새창</button>
+    <button onclick="basicOpen2();">기본새창2</button>
+    <button onclick="basicOpen3();">페이지 열어보기</button>
+    <button onclick="moveWin();">창 움직이기</button>
+    <button onclick="resizeWin();">창 resize</button>
+    <button onclick="scrollMove();">scrollMove()</button>
+    <script>
+        // Uncaught TypeError: Cannot set property 'innerHTML' of null
+        window.onload =function(){
+        var doc = document.getElementById('test');
+        doc.innerHTML = "open하지마~~!";
+        }
+    </script>
+    <h3 id = "test">open()</h3>
+    <script>
+        function scrollMove(){
+            window.scrollTo(600,0);
+        }
+
+        function basicOpen() {
+            window.open();
+        }
+
+        function basicOpen2() {
+            // window.open("", 'popup', 'width=100, height=300');
+            var popup = window.open("", 'popup', "width=100, height=300, left= 100, top=300");
+            popup.document.body.innerHTML = "<h1>새 창 내가씀</h1>";
+        }
+
+        function basicOpen3() {
+            window.open("http://www.naver.com", "_blank", "width=400, height=400");
+        }
+
+        function moveWin() {
+            var pop = open("", "test", "width=300, height = 300");
+            var count = 0;
+            var inter;
+            inter = setTimeout(function(){
+            // inter = setInterval(function(){
+                pop.moveTo(Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000));
+                count++;
+                if (count == 5) {
+                    clearInterval(inter);
+                }
+            }, 1000);
+        }
+
+        function resizeWin() {
+            var pop = open("", "test", "width=300, height = 300");
+            var count = 0;
+            var inter;
+            inter = setInterval(function(){
+                pop.resizeTo(Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000));
+                // pop.document.body.style.backgroundColor = rgb(Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256));
+                pop.document.body.style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 1000) + ',' + Math.floor(Math.random() * 1000) + ',' + Math.floor(Math.random() * 1000) + ')';
+                pop.moveTo(Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000));
+                count++;
+                if (count == 5) {
+                    clearInterval(inter);
+                }
+            }, 1000);
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>속성선택자</title>
+    <style>
+        /* 속성='값' 속성선택자 속성값이 값과 일치하는 element선택 */
+        p[width='100'] {
+            background-color:salmon;
+            color:white;
+        }
+
+        div[width='100'] {
+            background-color:aqua;
+            color:beige;
+        }
+        input[value='1'] {
+            width:300px; height:300px;
+        }
+        input[type="text"] {
+            background-color: red;
+        }
+        /* ~= : 띄어쓰기를 기준으로 자료를 찾음 */
+        a[href ~='com'] {
+            color:rosybrown;
+            background-color:firebrick;
+        }
+        /* |= : -표시를 기준으로 일치하는 자료를 찾음 
+            해당값으로 시작해야함!
+        */
+        a[href|='com'] {
+            background-color: chartreuse;
+        }
+        /* ^= : 시작하는 값이 일치하는 자료를 찾음 ^ : 시작 */
+        a[href^='http']
+        {
+            color:darkgray;
+            background-color: chocolate;
+            /* width:20px; height:20px; */
+            width:50px; height:50px;
+        }
+
+        /* $= 끝값이(끝나는 단어/문자) 일치하는 자료 찾음  */
+        a[href$='com'] {
+            font-size:'200px';
+            background-color:black;
+            color:ivory;
+        }
+
+        p[width$='0'] {
+            font-size:50px;
+        }
+        /* *= : 전체에서 일치하는 것 찾기 */
+        /* a[href*='w']{  */
+        a[href*='om'] {
+            font-family: '굴림', '궁서체';
+        } 
+        
+
+    </style>
+</head>
+
+<body>
+    <p width='100'>여기는 width가 100</p>
+    <div width='100'>여기도 width가 100</div>
+    <input type="radio" name='ral' value='1'> 남
+    <input type="radio" name='ral' value='2'> 여 <br>
+    이름 <input type='text' name='name'> <br>
+    <a href="test">test연결하자</a> <br>
+    <a href="http://www.naver.com">네이버</a> <br>
+    <a href="com-naver--">네이버1</a> <br>
+    <a href="www naver com">네이버2</a>
+</body>
+
+</html>

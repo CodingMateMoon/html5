@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>button풀이</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        .data-test {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            display: inline-block;
+            background-color: rgb(0, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="data-test">0</button>
+    <button class="data-test">0</button>
+    <button class="data-test">0</button>
+    <button class="data-test">0</button>
+    <button class="data-test">0</button>
+    <script>
+        $(function () {
+
+            $(".data-test").each(function(){
+                $(this).on("click",{count: 0}, function(event) {
+                    var cnt = ++event.data.count;
+                    if (cnt == 10) {
+                        $(this).off('click');
+                    }
+                    $(this).text(cnt).css("background-color","rgba(0,255, 255," + (1 - cnt / 10) + ")");
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>

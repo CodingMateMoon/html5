@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>객체활용하기!</title>
+</head>
+
+<body>
+    <h3>객체선언 및 접근하기</h3>
+    <p>객체를 선언할 때는 {}를 이용하며, 키 : 값으로 생성한다.
+        보관하는 값이 여러 개 일때는 , 로 구분하면 됨.
+    </p>
+    <div id="area"></div>
+    <button onclick="objTest()">객체테스트</button>
+    <script>
+        function objTest() {
+            // 객체선언하기
+            var Person = {
+                name: '유병승',
+                age: 19,
+                address: '경기도 시흥시',
+                toString: function () {
+                    return this.name + this.age + this.address;
+                },
+                arr: [
+                    { item: '설사약', fn: function () { alert('이건 어떻게 출력?'); } }, { item: '두통약' },
+                    function () { alert('이거출력해봐'); },
+                ],
+                'nick name': '유뱅',
+                '*^.~*': '새해복 많이 받으세요~!'
+            };
+            console.log(Person.name);
+            console.log(Person.age);
+            console.log(Person['address']);
+            console.log(Person['toString']);
+            console.log(Person['toString']());
+            console.log(Person['arr'][0]['item']);
+            console.log(Person['arr'][1].item);
+            // Person['arr'][2]();
+            Person['arr'][0]['fn']();
+            console.log(Person['arr'][2]());
+            console.log(Person['nick name']);
+            console.log(Person['*^.~*']);
+            var doc = document.getElementById('area');
+
+            for (var value in Person) {
+                doc.innerHTML += value + " : " + Person[value] + "<br>";
+            }
+
+            for (var key in Person) {
+                var prop = Person[key];
+                doc.innerHTML += key + " : " + prop + "<br>";
+
+                if (typeof (Person[key]) === 'object') {
+                    for (var i = 0; i < Person[key].length; i++) {
+                        if (typeof (Person[key][i]) === 'object') {
+                            for (var t in Person[key][i]) {
+                                console.log("arr : " + Person[key][i][t])
+                            }
+                        } else {
+                            console.log("arr : " + Person[key][i]);
+                        }
+                    }
+                }
+
+                // if (typeof (prop) === 'object') {
+                //     for (var i in prop) {
+
+                //         doc.innerHTML += "key : " + i + " value : " + prop[i] + "<br>";
+                //     }
+                // }
+            }
+        }
+    </script>
+    <h3>in/with</h3>
+    <p>
+        in 객체안에 있는 속성(멤버변수)를 확인하는 것<br>
+        with 객체명을 사용하지 않고 접근할 수 있게 하는 것
+    </p>
+    <h1 id="print"></h1>
+    <button onclick="test1()">in&with</button>
+    <script>
+        var Snack = {
+            name: '수미칩',
+            price: '1500'
+        }
+        function test1() {
+            if ('price' in Snack) {
+                alert("가격있어!!" + Snack['price']);
+                document.getElementById('print').innerHTML = "가격있어!!" + Snack['price'] + "<br>";
+            }
+
+            // if ('prince' in Snack) {
+            //     alert("가격있어!!" + Snack['price']);
+            // }
+        }
+
+
+        // with(Snack) (권장하지 않음)
+        // Uncaught ReferenceError: price is not defined
+        with(Snack) 
+        {
+            console.log(name);
+            console.log(price);
+        }
+    </script>
+
+    <h3>객체를 추가하고 삭제해보자~!</h3>
+    <h4 id = 'area1'></h4>
+    <button onclick="test2()">객체속성추가</button>
+    <button onclick="test3()">객체속성삭제</button>
+    <script>
+        var Student = {};
+        function test2(){
+            var name = prompt("추가속성");
+            var value = prompt("속성값");
+            Student[name] = value;
+            for (var s in Student) {
+                document.getElementById('area1').innerHTML += s + " : " + Student[s] + "&nbsp;";
+            }
+            document.getElementById('area1').innerHTML += "<br>";
+
+            console.log(Student);
+        }
+
+        function test3() {
+            var key = '';
+            for (var v in Student) {
+                key += v + ", ";
+            }
+            var value = prompt(key);
+            delete(Student[value]);
+        }
+    </script>
+</body>
+
+</html>

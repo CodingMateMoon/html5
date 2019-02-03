@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 데이터 입출력-->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <button id="btn">window.confirm()</button>
+    <script>
+        document.write("<h2>document.write()를 활용하여 넣은 문구</h2>");
+        document.getElementById("test").innerHTML += "<h1>스크립트에서 innerHTML에 넣은 h1문구</h1>";
+        document.getElementById("test2").innerText += "<h1>스크립트에서 innerText 넣은 h1문구</h1>";
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", function () {
+            var flag = window.confirm("당신은 javascript를 써본 적이 있습니까?");
+            var doc = document.getElementById("test3");
+            if (flag) {
+                doc.innerHTML = "훌륭하십니다!";
+            } else {
+                doc.innerHTML = "지금부터 시작해도 늦지 않았어요!";
+            }
+            var nickname = prompt("당신의 별명은?");
+            document.body.innerHTML += "당신의 별명은 " + nickname + "입니다";
+        });   
+    </script>
+</body>
+
+</html>

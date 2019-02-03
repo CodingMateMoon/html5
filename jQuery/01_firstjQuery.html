@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--
+        http://jquery.com/
+        -> Download jQuery v3.3.1
+        -> jQuery 
+        Download the compressed, production jQuery 3.3.1
+        내용 다른 이름으로 저장
+        -> jquery-3.3.1.min.js
+
+        jQuery Selectors : https://www.w3schools.com/jquery/jquery_ref_selectors.asp
+
+        :first ex) $("p:first")	The first <p> element 페이지 p태그 중 첫번째
+        :last ex) $("p:last")	The last <p> element 페이지 p태그 중 마지막
+        :even ex) 페이지 p태그 중 짝수
+        :first-of type Selector : https://www.w3schools.com/jquery/sel_firstoftype.asp -> Try it Yourself
+        nth-child(n) : 타입 상관없이 태그 순서대로 n번째
+        nth-of-type(n) : 같은 타입들만 기준으로 n번째
+    -->
+
+    <title>jQuery연결하기</title>
+    <!-- 파일 방식으로 불러오기 -->
+    <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+    <!-- CDN방식으로 불러오기-->
+    <!-- <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <!-- <script src="http://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // $('#area').html("안녕~이거될까?");
+        // $(document).ready(function(){
+        //     $('#area').html("안녕~이거 될까?");
+        // })
+        // console.log($('#area').html("안녕~이거될까?"));
+
+        jQuery(document).ready(function(){
+            jQuery('#area').html("안녕~이거 될까?");
+        })
+
+        $(function() {
+            $('#area').html("간편한 구현~!");
+        });
+        
+    </script>
+
+    <div id="area"></div>
+    <button onclick="test()">실행</button>
+    테스트<input type=text name="inputTag" id="test"/>
+    <div name="area2" id = "ar2"></div>
+    <div name="area2" id = "ar3"></div>
+    <script>
+        function test() {
+            // document.getElementById("area").innerHTML="이건 jQuery!!";
+            console.log($("#area").html("이건 jQuery"));
+            // $("input[name=inputTag]").value("test");
+            // console.log($("div[name="))
+            $("div[name=area2]").html("testsadfa");
+            // $("#ar2").html("testsadfa");
+        }
+        
+    </script>
+</body>
+
+</html>

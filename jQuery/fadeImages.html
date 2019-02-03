@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fadeImages</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <button id="left">left</button>
+    <image src="https://cdn.pixabay.com/photo/2014/12/17/21/30/wild-flowers-571940__340.jpg" width="300px" height="300px"
+        id="show" />
+    <button id="right">right</button>
+
+    <script>
+        var srcArray = ["https://cdn.pixabay.com/photo/2018/12/15/02/53/flower-3876195_960_720.jpg", "https://s-i.huffpost.com/gen/4127522/thumbs/o-THE-570.jpg?7", "http://attach.s.op.gg/forum/20171205102009_982656.png"];
+        var index = 0;
+        $(function () {
+
+            $("#left").click(function () {
+                $("#show").fadeOut(1000);
+                if (index == 0) {
+                    index = srcArray.length - 1;
+                } else {
+
+                    index--;
+                }
+                console.log("left : " + index);
+                setTimeout(function(){
+
+                    $("#show").attr("src", srcArray[index]);
+                    $("#show").fadeIn(1000);
+                }, 1000);
+            });
+            $("#right").click(function () {
+                $("#show").fadeOut(1000);
+                if (index == srcArray.length - 1) {
+                    index = 0;
+                } else {
+                    index++;
+                }
+                console.log("right : " + index);
+                setTimeout(function(){
+
+                    $("#show").attr("src", srcArray[index]);
+                    $("#show").fadeIn(1000);
+                    console.log("test");
+                }, 1000);
+            });
+        });
+    // $("#show").fadeOut();
+    </script>
+</body>
+
+</html>

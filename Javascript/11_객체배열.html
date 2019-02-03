@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>객체배열</title>
+</head>
+
+<body>
+    <script>
+        var objArr = []; // 배열
+        objArr[0] = { "name": "유병승", "age": 19, "gender": "여자" };
+        objArr[1] = { "name": "신재민", "age": 27, "gender": "남자" };
+        for (var i = 0; i < objArr.length; i++) {
+            console.log(objArr[i]);
+        }
+        console.log("\n");
+        objArr.push({ "name": "이일교", "age": 29, "gender": "여자" });
+        for (var i = 0; i < objArr.length; i++) {
+            console.log(objArr[i]);
+        }
+        console.log("\n");
+        objArr[0]['height'] = 180.5;
+        for (var i = 0; i < objArr.length; i++) {
+            console.log(objArr[i]);
+        }
+
+        function addPerson(name, age, gender) {
+            var obj = {
+                'name': name,
+                age: age,
+                gender: gender
+            }
+            return obj;
+        }
+
+        objArr.unshift(addPerson("문장현", 28, "남자"));
+        console.log("\n");
+        for (var i = 0; i < objArr.length; i++) {
+            console.log(objArr[i]);
+        }
+
+        //생성자함수
+        function Person(name, age, gender, height) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.height = height;
+        }
+        objArr.push(new Person("김지섭", 29, "남자", 173));
+        console.log("\n");
+        for (var i = 0; i < objArr.length; i++) {
+            console.log(objArr[i]);
+        }
+
+        console.log(objArr[objArr.length - 1] instanceof Person);
+        console.log(objArr[0] instanceof (Person));
+
+        function Board(title, comment, date) {
+            this.title = title;
+            this.comment = comment;
+            this.date = date;
+            // this.toString = function(){
+            //     return this.title + this.comment + this.date;
+            // }
+        }
+        Board.prototype.toString = function () {
+            return this.title + this.comment + this.date;
+        };
+
+        var boardArr = [new Board('냉무', '없음', new Date()), new Board("냉유", "있음", new Date())];
+        for (var i = 0; i < boardArr.length; i++) {
+            console.log(boardArr[i]);
+        }
+        console.log(boardArr[0].toString());
+        console.log(boardArr[1].toString());
+        console.log(new Object());
+        console.log(new Array());
+        console.log(new String());
+        var ar = new Array();
+        console.log(ar instanceof(Array));
+
+        // 객체의 캡슐화 적용~!
+        function Employee(empName, salary, department) {
+            var empName = empName;
+            var salary = salary;
+            var department = department;
+            this.getEmpName = function() {
+                return empName;
+            }
+            this.setEmpName = function(name) {
+                empName = name;
+            }
+            this.getSalary = function() {
+                return salary;
+            }
+            this.setSalary = function(salary1) {
+                salary = salary1;
+            }
+        }
+
+        var emp = new Employee("한혜진", 500, '개발부');
+        console.log(emp);
+        console.log(emp.getEmpName());
+        emp.setEmpName('신재민');
+        console.log(emp.getEmpName());
+        console.log(emp.getSalary());
+        emp.setSalary(200);
+        console.log(emp.getSalary());
+
+        function Character(name, hp, mp, level) {
+            var name = name;
+            var hp = hp;
+            var mp = mp;
+            var level = level;
+            this.getName = function(){
+                return name;
+            }
+            this.setName = function(n) {
+                name = n
+            }
+            this.getHp = function(){
+                return hp;
+            }
+            this.setHp = function(h) {
+                hp = h
+            }
+            this.getMp = function(){
+                return mp;
+            }
+            this.setMp = function(m) {
+                mp = m;
+            }
+            this.getLevel = function(){
+                return level;
+            }
+            this.setLevel = function(l) {
+                level = l;
+            }
+        }
+        function Wizard(name, hp, mp, level, skill, item) {
+            this.cha = Character;
+            this.cha(name,hp,mp,level);
+            var skill = skill;
+            var item = item;
+            this.getSkill = function(){
+                return skill;
+            }
+            this.setSkill = function(s) {
+                skill = s;
+            }
+            this.setItem = function(i) {
+                item.push(i);
+            }
+            this.getItem = function() {
+                return item;
+            }
+        }
+
+        var w = new Wizard('한솔', 30, 100, 1, ['힐링', '돌던지기'], ['뚝배기', '몽둥이']);
+        console.log(w);
+        console.log(w.getName());
+        console.log(w.getSkill());
+    </script>
+</body>
+
+</html>

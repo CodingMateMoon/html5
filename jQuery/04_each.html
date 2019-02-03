@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>each 활용하기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h2>1</h2>
+    <h2>2</h2>
+    <h2>3</h2>
+    <h2>4</h2>
+    <h2>5</h2>
+    <!-- h3[class='test']{}*3 -->
+    <h3 class="test">1</h3>
+    <p class="test">4 p</p>
+    <p class="test">5 p</p>
+    <h3 class="test">2</h3>
+    <h3 class="test">3</h3>
+    <p class="test">6 p</p>
+    <p class="test">7 p</p>
+    <div class="test">
+        <p>1child p</p>
+    </div>
+    <div class="test"></div>
+    <button onclick="test()">실행</button>
+    <script>
+        function test(){
+            // $('h2'.each(function(index, item){
+            //     console.log("item");
+            // }))
+            $('.test').each(function(index, item){
+                if(item.tagName == 'P') {
+                    $(item).css("background-color", "yellow");
+                };
+            });
+            console.log($(".test").find("p"));
+        }
+    </script>
+    <h3>each 배열(객체)활용하기</h3>
+    <div id="area"></div>
+    <button onclick="addElement()">추가하기</button>
+    <script>
+        // var testContent="";
+        // var output="";
+        function addElement(){
+            var output="";
+            var objArr = [
+                {name:"다음", "link":"http://www.daum.net"},
+                {name:"네이버", "link":"http://www.naver.com"},
+                {name:"구글", "link":"http://www.google.com"},
+                {name:"KH", "link":"http://iei.or.kr"}
+            ];
+            $.each(objArr, function(index, item){
+                console.log(item);
+                console.log(index + " : " + item.name + " " + item.link);
+                output += "<a href='" + item['link']+"'>" + item['name'] + "</a><br>";
+                console.log(output);
+            });
+            $("#area").html(output);
+
+            // var objArr2=[
+            //     {name:'버튼',code:'<button onclick=alert("버튼")>실행</button>'},
+            //     {name:'제목',code:'<h1>h1태그</h1>'},
+            //     {name:'단락',code:'<p>p태그</p>'}
+            // ];
+
+            // $.each(objArr2,function(index,item){
+            //     var content=$('#area').html()+item.code;
+            //     $('#area').html(content);
+            // });
+
+
+            var objArr2 = [
+                {name:'버튼', code:"<button onclick=alert('버튼')>실행</button>"},
+                {name:'제목', code:"<h1>h1태그</h1>"},
+                {name:'단락', code:"<p>p 태그</p>"}
+            ];
+            $.each(objArr2, function(index,item){
+                console.log(item.code);
+                var content = $("#area").html() + item.code;
+                $("#area").html(content);
+            });
+
+            // for (int i = 0 )
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>event</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid rebeccapurple;
+            color: aquamarine;
+            padding:10px;
+        }
+
+        .btnstyle {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(0, 255, 255);
+            color: white;
+            border: none;
+        }
+
+        .borderStyle {
+            border: 5px solid black;
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="test2">기본상태</div>
+    <script>
+        $(function () {
+            $("#test2").on('mouseenter', function () {
+                // this = event.target, this쓸 때 window가 들어올 수 있음 console.log로 찍어보고 원하는 객체가 맞는지 확인 필요
+                console.log(event.target);
+                console.log(this);
+                $(event.target).css("background-color", "royalblue").html("event.target 마우스가 요소에 들어옴");
+            });
+            // $("#test2").on("mouseout", function(){
+            //     $(this).css("background-color", "rebeccapurple").html("this 마우스가 요소에서 나감");
+            // });
+
+            $("#test2").on({
+                'mouseenter': function () {
+                    $(this).css("background-color", "blueviolet");
+                },
+                "mouseleave": function () {
+                    // $(this).css("background-color", "aquamarine");
+                    $(this).css({ "background-color": "goldenrod", "color": "aquamarine" });
+                },
+                "click": function () {
+                    $(this).css({ "background-color": "yellow", "color": "black" });
+                    // 이벤트 제거 : off~!
+                    // $(this).off("mouseenter");
+                    // $(this).off("mouseenter mouseleave");
+                    $(this).off("mouseenter").off("mouseleave");
+                }
+            });
+        })
+    </script>
+    <!-- // 이벤트 객체에 data를 넣는 것~! -->
+    <div id="kh">
+        <div id="ik"></div>
+    </div>
+    <!-- <div id="kh"></div>
+    <div id="ik"></div> -->
+    <script>
+        $(function () {
+            $("#kh").on("click", { name: "마풍운" }, function (event) {
+                console.log(event.data);
+                $(this).html(event.data.name);
+                // $(this).off("click");
+            })
+        });
+        // one함수 : 이벤트 한번만 실행되게 하는 것
+        // $("#ik").one("click", function () {
+        //     console.log("한번만");
+        //     $(this).attr("style", "height:200px;width:200px;");
+        //     // $(this).attr({"width": "200px", "height": "200px"});
+        // });
+        $("#ik").on("click", function () {
+            $(this).attr("style", "height:200px;width:200px;");
+            // $(this).attr("style", "background-color:red;");
+            alert("ik event 한번만");
+            // 부모에게 이벤트 전달하는 것을 제거
+            // event.stopPropagation();
+            // open("http://iei.or.kr", "_blank", "width=500px height=500px");
+            // $(this).attr({"width": "200px", "height": "200px"});
+        });
+
+        // trigger("bs") : bs 바인딩된 객체의 이벤트 핸들러 실행됨
+        // $("#kh").on("bs", function(){
+        //     alert("bs Event");
+        // })
+        $("#kh").on("click", function(){
+            alert("bs Event");
+        })
+        setInterval(() => {
+            // $("div#ik").trigger("click");
+            // $("div#ik").trigger("bs");
+            // $("div#kh").trigger("bs");
+            // $("div").trigger("click");
+        }, 3000)
+    </script>
+
+    <button class="btnstyle">0</button>
+    <button class="btnstyle">0</button>
+    <button class="btnstyle">0</button>
+    <button class="btnstyle">0</button>
+    <button class="btnstyle">0</button>
+
+    <script>
+        // $(".btnstyle").on("click", {count : 0}, function(event){
+        //     event.data.count += 1;
+        //     $(this).html(event.data.count);
+        //     if (event.data.count == 10) {
+        //         $(this).attr("style","border:5px solid black");
+        //     }
+        // })
+
+        $(".btnstyle").each(function(index, item) {
+            console.log(item);
+            $(this).on("click", {count : 0}, function(event){
+                var val = ++event.data.count;
+                if (val == 10) {
+                    $(this).html(0);
+                    $(this).off("click");
+                    $(this).attr("style", "border:5px solid black;color:black;background-color: rgba(0, 255, 255," + (1 - val / 10) + ");");
+                } else {
+                    $(this).html(val);
+                    $(this).attr("style", "background-color: rgba(0, 255, 255," + (1 - val / 10) + ");");
+                }
+            });
+        })
+
+        // $(".btnstyle").on("click", {count : 0}, function(event){
+        //     event.data.count += 1;
+        //     $(this).html(event.data.count);
+        //     if (event.data.count == 10) {
+        //         $(this).attr("style","border:5px solid black");
+        //     }
+        // })
+
+        // $(".btnstyle").on("click", function (event) {
+        //     console.log($(this).html());
+        //     if (val == 1)
+        //         $(this).removeClass("borderStyle");
+        //     var val = parseInt($(this).html()) + 1;
+
+        //     $(this).html(val);
+        //     if (val == 10) {
+        //         // $(this).attr({"style":"border:5px solid black", "background-color":"white"});
+        //         $(this).attr({ "style": "border:5px solid black; background-color:white;color:black;" });
+        //         // console.log($(this).addClass("borderStyle"));
+        //         val = 0;
+        //         $(this).html(val);
+        //         $(this).off("click");
+        //     }
+        // })
+        // $("#btn1").on("click", {count : 0}, function(event){
+        //     event.data.count += 1;
+        //     $(this).html(event.data.count);
+        //     if (event.data.count == 10) {
+        //         $(this).attr("style","border:5px solid black");
+        //     }
+        // })
+    </script>
+    <!--버튼 누를때마다 숫자 10까지 가면 하얀색-->
+
+    <form action="http://iei.or.kr" method="post" onsubmit="prevent()">
+        id<input type="text" name="id">
+        pw<input type="password" name="pw">
+        <input type="submit">
+    </form>
+    <script>
+        function prevent(){
+            // if($('input[name=id]').val().trim().length == 0) {
+            if($('[name=id]').val().trim().length == 0) {
+                console.log("test");
+                event.preventDefault();
+            }
+        }
+    </script>
+
+
+    <!--
+        이벤트 연결 메소드
+        § 요소객체에 이벤트 발생시 연결될 이벤트핸들러 지정하는 메소드
+        메소드 내용
+        $(‘s’).bind(‘이벤트명 [이벤트명]’,
+        function( ){ })
+        지정 이벤트에 이벤트 핸들러 지정
+        ☞ 다수 이벤트 지정시 띄어쓰기로 구분
+
+        $(‘s’).bind(‘이벤트명 [이벤트
+        명]’,{ 객체 },function(){})
+        이벤트처리 객체를 인자로 넣어서 처리
+        event객체 data에 들어감
+
+        $(‘s’).on(‘이벤트명[,이벤트명],’
+        function( ){ })
+        지정 이벤트에 이벤트 핸들러 지정
+
+        $(‘s’).on({ 객체 })
+        이벤트처리 객체를 인자로 넣어서 처리
+        event객체 data에 들어감
+        
+        $(‘s’).on(‘이벤트’, ’선택자’,
+        function(){})
+        선택된 요소 중 새로 동적으로 생성되는
+        선택자에 이벤트를 적용 동적적용
+        ☞ bind메소드는 3.0버전부터 사용하지 않고 on메소드를 사용권고
+        bind : 권장X
+        '이벤트명',이벤트 핸들러(함수)
+
+    -->
+</body>
+
+</html>

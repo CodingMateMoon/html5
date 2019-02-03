@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>effect 실행해보기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        .test {
+            width: 200px;
+            height: 200px;
+            background-color: palevioletred;
+        }
+
+        .image {
+            position: relative;
+        }
+
+        #scroll {
+            width: 155px;
+            height: 105px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test1" class="test"></div>
+    <button id="btn">실행</button>
+    <br>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                $('#test1').animate({ width: "600px", height: "600px", backgroundColor: "skyblue" }, 2000, function () {
+                    alert("애니메이션 종료");
+                });
+            });
+        });
+    </script>
+    <img src="https://cdn.pixabay.com/photo/2018/12/15/02/53/flower-3876195_960_720.jpg" width="300px" height="100px"
+        class="image" />
+    <script>
+        $(function () {
+            $(".image").click(function () {
+                $(this).animate({ "left": "-158px" }, "slow");
+            });
+        })
+    </script>
+
+    <div id="scroll">
+        <img src="https://cdn.pixabay.com/photo/2018/12/15/02/53/flower-3876195_960_720.jpg" width="150px" height=100px
+            class="image" />
+    </div>
+    <script>
+        $(function () {
+            $(".image").click(function () {
+                $(this).animate({ "left": "-160px" }, slow)
+            });
+        })
+    </script>
+    <img id="item" src="http://attach.s.op.gg/forum/20171205102009_982656.png" width="200px" height="200px" />
+    <br>
+    <button id="btn1">보여주기</button>
+    <button id="btn2">숨기기</button>
+    <button id="btn3">한번에</button>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                // $("#item").show();
+
+                $("#item").show(1000);
+            });
+
+            $("#btn2").click(function () {
+                $("#item").hide(1000);
+            });
+
+            $("#btn3").click(function () {
+                $("#item").toggle(1000);
+            });
+        })
+    </script>
+    <style>
+        div {
+            width: 300px;
+            height: 30px;
+            background-color: beige;
+            color: white;
+            border: 1px solid brown;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        p {
+            border: 1px solid rgba(134, 134, 2, 0.808);
+            width: 300px;
+            height: 50px;
+        }
+    </style>
+    <div id="a">home</div>
+    <p id="a1">메인입니다.</p>
+    <div>자료실</div>
+    <p>게시물이 없어요</p>
+    <div>회원관리</div>
+    <p>회원이 없어요</p>
+    <div>기타</div>
+    <p>기타를 치자 팅팅</p>
+    <script>
+        $(function(){
+            var flag = true;
+            $("div").click(function(){
+                // if (flag) {
+                //     $(this).next().slideDown();
+                //     flag = false;
+                // } else {
+                //     $(this).next().slideUp();
+                //     flag = true;
+                // }
+                $(this).next().slideToggle(300);
+            });
+        });
+    </script>
+    <!--
+        fadeIn() : 서서히 나타남
+        fadeOut() : 서서히 사라짐
+        fadeToggle() : fadeIn/fadeOut
+        fadeTo(): 설정한 값까지 투명화, 희미해짐
+    -->
+    <h3>fade</h3>
+    <button id="fadeIn">fadeIn</button>
+    <button id="fadeOut">fadeOut</button>
+    <button id="fadeTo">fadeTo</button>
+    <button id="fadeToggle">fadeToggle</button>
+    <br>
+    <img id="f" src="http://attach.s.op.gg/forum/20171205102009_982656.png" width="200px" height="200px"/>
+    <script>
+        $(function(){
+            $("#fadeIn").click(function(){
+                $("#f").fadeIn(2000);
+            });
+            $("#fadeOut").click(function(){
+                $("#f").fadeOut(2000);
+            })
+            $("#fadeToggle").click(function(){
+                $("#f").fadeToggle(2000);
+            })
+            $("#fadeTo").click(function(){
+                $("#f").fadeTo(2000, 0.4);
+            })
+        })
+    </script>
+</body>
+
+</html>

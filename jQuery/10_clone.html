@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>객체 복사하기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h3>객체 복사해보자</h3>
+    <button onclick="cloneTest()">복사</button>
+    <div id='clone-test'>
+        <div id="item1" class="item">
+            <span>안녕</span>
+        </div>
+    </div>
+    <br>
+    <style>
+        .item {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 5px 5px 0 0;
+            line-height: 100px;
+            background-color: lightgreen;
+        }
+
+        .item span {
+            font-size: 24px;
+            font-weight: bold;
+            color: white
+        }
+
+        .lime {
+            background-color: lime;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#item1").hover(function () {
+                $(this).addClass("lime");
+            }, function () {
+                $(this).removeClass("lime");
+            })
+        });
+        function cloneTest() {
+            // clone-test의 자식으로 뒤에 추가
+            $("#item1").clone(true).appendTo($("#clone-test"));
+        }
+    </script>
+    <button id="emptyTest">empty지우기</button>
+    <button id="removeTest">remove지우기</button>
+    <button id="detachTest">detach지우기</button>
+    <div id="remove-test" class="box">
+        <div id="item2" class="item">
+            <span>화이팅</span>
+        </div>
+    </div>
+    <div id="result" class="box"></div>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            padding: 5px 10px 15px 10px;
+            margin: 10px;
+        }
+
+        #remove-test {
+            border: 2px solid red;
+        }
+
+        #result{
+            border: 2px dashed blue;
+        }
+    </style>
+    <script>
+
+        /*
+        document에 있는 객체 제거
+        § html내부에 요소객체를 제거하는 메소드
+        메소드 내용
+        $(‘s[,s…]’).remove([‘s’]);
+        문서 내에 선택자를 제거 후 삭제된 요소를 리턴
+        ☞ 인자값을 기준으로 삭제가능
+        ☞ 이벤트핸들러, 데이터까지 모두 삭제
+        $(‘s’).detach();
+        문서 내에 선택자를 제거 후 삭제된 요소를 리턴
+        ☞ 이벤트핸들러, 데이터는 삭제 안함
+        ☞ 값을 리턴받아 나중에 활용 가능
+        $(‘s’).empty();
+        문서 내에 선택자를 제거 후 삭제된 요소를 리턴
+        ☞ 선택자 자신과 속성은 삭제 안하고 내용만 삭제
+        */
+
+        $(function(){
+            // 마우스 올라갔을때 내려갔을때
+            $("#item2").hover(function(){
+                $(this).addClass("lime");
+            }, function(){
+                $(this).removeClass("lime");
+            })
+            $("#emptyTest").click(function(){
+                $("#remove-test").empty();
+            });
+            $("#removeTest").click(function(){
+                // var el = $("#removeTest").remove();
+                // var el = $("#remove-test").remove();
+                // remove() : 삭제하면서 hover 이벤트 사라짐
+                var el = $("#item2").remove();
+                $("#result").append(el);
+            })
+
+            $("#detachTest").click(function(){
+                // detach() : 삭제해도 hover 이벤트 남아있음
+                var el = $("#item2").detach();
+                $("#result").append(el);
+            })
+        })
+    </script>
+</body>
+
+</html>

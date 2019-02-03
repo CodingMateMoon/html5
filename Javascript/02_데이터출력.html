@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>데이터 출력하기!</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <!-- <a href="http://iei.or.kr">이거 눌러봐</a> -->
+    <!-- input 태그 name 변수로 구분함-->
+    <input id="in" type="text" name="name" />
+    <button onclick="func();">저장</button>
+    <!-- <button onclick="location.href='http://iei.or.kr'">이거 눌러봐~!</button>" -->
+    <!-- 문서써주기 document 이용 -->
+    <script>
+        function func() {
+            var t = document.getElementById('in').value;
+            // document.getElementById("test2").innerHTML = t;
+            // 태그들도 전부 문자로 출력하게끔 바꿈
+            document.getElementById("test2").innerText = t;
+        }
+
+        document.write("반장님 nobody는 어때요?");
+        document.write("<h1>성희씨가 좋아하는 태그</h1>");
+        window.alert("이건 그냥 출력");
+        // document.getElementById("test").innerHTML="난 스크립트가 넣은 문구";
+        document.getElementById("test").innerHTML = "<h2>HTML난 스크립트가 넣은 문구</h2>";
+        document.getElementById("test2").innerText = "<h2>TEXT난 스크립트가 넣은 문구</h2>";
+        // document.body.innerHTML="안녕하세요";
+        // document.body.innerHTML += "<h1>HTML 안녕하세요 저는 유병승입니다</h1>";
+        // document.body.innerText += "<h1>TEXT 안녕하세요 저는 유병승입니다</h1>";
+        var su = 10;
+        // console.log("진우씨가 다 나았어요!");
+        console.log(su);
+        // console.log(document.body.innerHTML);
+        console.log(document.body.innerText);
+    </script>
+
+    <button id="but1">window.confirm()</button>
+    <script>
+        // 입력 받아보자
+        // confirm()
+        var but1 = document.getElementById("but1");
+        but1.addEventListener("click", function () {
+            var flag = window.confirm("당신은 신재민입니까?");
+            console.log(flag);
+            if (flag) {
+                document.body.innerHTML = "그럼 호빵맨 닮았어요?";
+            } else {
+                document.body.innerHTML = "휴~ 다행이네요";
+            }
+            var nickname = prompt("당신의 별명은?");
+            console.log(nickname);
+            document.body.innerHTML = "당신의 별명은 " + nickname + "입니다.";
+        });
+
+    </script>
+</body>
+
+</html>

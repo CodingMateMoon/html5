@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>속성값 변경하기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <img src="https://s-i.huffpost.com/gen/4127522/thumbs/o-THE-570.jpg?7" width="100px" height = "100px"/>
+    <img src="https://s-i.huffpost.com/gen/4127522/thumbs/o-THE-570.jpg?7" width="100px" height = "100px"/>
+    <img src="https://s-i.huffpost.com/gen/4127522/thumbs/o-THE-570.jpg?7" width="100px" height = "100px"/>
+    <button onclick="changeSize()">사이즈변경</button>
+    <button onclick="changeSize2()">사이즈변경2</button>
+    <button onclick="changeObject()">객체이용 변경</button>
+    <button onclick="removeAttrTest()">removeAttr()</button>
+    <script>
+        function changeSize(){
+            var image = $("img");
+            var width = image.attr("width");
+            var height = image.attr("height");
+            // width = width * 2;
+            // console.log("image.width : " + image.width);
+            console.log(parseInt(width));
+            $("img").attr("width", parseInt(width) * 2);
+            // $("img").attr("width", width);
+            $("img").attr("height", parseInt(height) * 2);
+            console.log($('img').attr("width"));
+            var pic = "https://cdn.pixabay.com/photo/2018/12/16/18/12/open-fire-3879031__340.jpg";
+            image.attr("src", pic);
+        }
+
+        // return값 첫번째 속성 인자로 들어감
+        function changeSize2(){
+            $('img').attr("width", function(i, v){
+                console.log(v);
+                if (i == 1 || i == 2) {
+                    return parseInt(v) + 100;
+                }
+                return v;
+            });
+            // $('img').attr("width", function(i, v){
+            //     console.log(v);
+            //     if (i == 1 || i == 2) {
+            //         return parseInt(v) + 100;
+            //     }
+            //     return v;
+            // });
+        }
+
+        function changeObject() {
+            $('img').attr({"width" : "300px", "height" : "300px", "style" : "border: 3px solid red;border-radius:100px;"});
+        }
+
+        function removeAttrTest() {
+            $('img').removeAttr("style");
+        }
+    </script>
+</body>
+</html>

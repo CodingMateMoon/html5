@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM(Document Object Model)</title>
+    <style>
+        #menu{
+            /* display: inline; */
+            list-style-type : none;
+            
+        }
+
+        #menu li {
+            display : inline-block;
+        }
+
+        #menu li a {
+            text-decoration: none;
+            color:green;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!--
+        html head 요소노드는 내부에 width height 등 속성 가짐
+        요소노드 : <div> <h1> 텍스트노드 : hello
+        <p> i am  your father -> 요소노드 + 텍스트노드
+        요소노드 생성- 텍스트노드 생성 - 요소노드에 텍스트노드 추가- 상위 객체에 요소노드 추가 
+    -->
+    <header>
+        <div>
+            <ul id=menu>
+                <li><a href="#">test1</a></li>
+                <li><a href="#">test2</a></li>
+                <li><a href="#">test3</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <button onclick="addElement()">객체 추가</button> <br>
+    태그명(Element Node)<input type="text" class="node" />
+    내용(Text Node)<input type="text" class="node" /> <br>
+    <button onclick="addElementText()">요소노드&텍스트노드 추가</button> <br><br>
+
+    <!-- <input type="text" class="menu" /> -->
+    <input type="text" class="menu" /> <br>
+    <button onclick="addMenu()">메뉴 추가</button> <br>
+
+    <script>
+        function addElement() {
+            var el = document.createElement("h1");
+            var text = document.createTextNode(prompt("메세지"));
+            el.appendChild(text);
+            document.body.appendChild(el);
+        }
+
+        function addElementText() {
+            var input = document.getElementsByClassName("node");
+            var el = document.createElement(input[0].value);
+
+            var text = document.createTextNode(input[1].value);
+            el.appendChild(text);
+            document.body.appendChild(el);
+        }
+
+        function addMenu() {
+            var ulEl = document.getElementsByTagName('ul')[0];
+            var liEl = document.createElement("li");
+            var aEl = document.createElement("a");
+            var text = document.createTextNode(prompt("제목"));
+            aEl.setAttribute("href","http://iei.or.kr");
+            aEl.appendChild(text);
+            liEl.appendChild(aEl);
+            ulEl.appendChild(liEl);
+        }
+
+        // function addMenu() {
+        //     var input = document.getElementsByClassName("menu");
+        //     var el = document.createElement('li');
+        //     var text = document.createTextNode(input[0].value);
+        //     el.appendChild(text);
+        //     var doc = document.getElementById("menu");
+        //     doc.appendChild(el);
+        // }
+    </script>
+    <button onclick="addImg()">이미지추가</button>
+    <button onclick="deleteImg()">이미지삭제</button>
+    <input type="text" id="dir"/>이미지경로
+    <div id="img-container"></div>
+    <script>
+        function deleteImg() {
+            var container = document.getElementById('img-container');
+            var img = document.querySelectorAll("div img");
+            // container.removeChild(img[img.length - 1]);
+            console.log(img[img.length - 1].parentNode);
+            img[img.length - 1].parentNode.removeChild(img[img.length - 1]);
+            console.log(container.children);
+            container.children[1].style.width = '500px';
+        }
+
+        function addImg() {
+            var container = document.getElementById('img-container');
+            var img = document.createElement("img");
+            // img.src = "https://cdn.pixabay.com/photo/2018/11/04/09/08/toppokki-3793393_960_720.jpg";
+            img.src = document.getElementById('dir').value;
+            img.width = "200";
+            img.height = "200";
+            container.appendChild(img);
+            document.getElementById('dir').value = '';
+        }
+    </script>
+    <button onclick="menuChange()">메뉴스타일 변경</button>
+    <button onclick="removeMenu(this)">메뉴 삭제</button>
+    <script>
+        function menuChange() {
+            // 선택자 넣을 수 있음 / li a / li>a
+            var aEl = document.querySelectorAll("li a");
+            var a = document.querySelector("li a");
+            console.log(aEl);
+            console.log(a);
+            
+            for (var i = 0; i <aEl.length; i++) {
+                // aEl[i].style.fontSize="150";
+                aEl[i].style.fontSize = "large";
+                aEl[i].style.fontWeight="bolder";
+            }
+        }
+
+        // function removeMenu() {
+        //     console.log(this);
+        //     var container = document.getElementById("menu");
+        //     var liList = document.querySelectorAll("#menu li");
+        //     console.log(container);
+        //     // liList[liList.length - 1].parentNode.removeChild(liList[liList.length - 1]);
+        //     container.removeChild(liList[liList.length - 1]);
+        // }
+
+        function removeMenu(e) {
+            var parentNode = e.parentNode;
+            console.log(e);
+            console.log(e.parentNode);
+            console.log(e.parentNode.children);
+            for (var i = 0; i < e.parentNode.children.length; i++) {
+                if (e.parentNode.children[i].tagName == 'UL' ) {
+                    e.parentNode.removeChild(e.parentNode.children[i]);
+                }
+            }
+            // console.log(e.previousSibling.previousSibling.previousSibling);
+        }
+    </script>
+
+</body>
+
+</html>

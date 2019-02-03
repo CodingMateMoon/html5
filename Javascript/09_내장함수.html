@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>내장함수</title>
+</head>
+
+<body>
+    <h1>내장함수</h1>
+    <h3>인코딩과 디코딩 관련 내장함수</h3>
+    <p>네트워크상에서 정보공유를 위해 아스키코드, 유니코드값으로 데이터를 변경하는것</p>
+    <p>
+        escape : 영문, 알파벳, 숫자, 일부특수문자(@,*,-,_,/) 제외하고 문자를 인코딩<br>
+        encodeURI : escaped에서 인터넷주소에 사용되는 일부특수문자(; , : , - , _ , . , /)를 제외<br>
+        encodeURIComponent: 알파벳, 숫자를 제외한 모든 문자 인코딩(UTF-8)<br>
+
+        [decode]<br>
+        unescape : escape인코딩된 것을 해제한다.<br>
+        decodeURI : encodeURI인코딩된 것을 해제한다.<br>
+        decodeURIComponent: encodeURIComponent인코딩된 것을 해제한다.<br>
+    </p>
+    <div id="area1"></div>
+    <button onclick="test();">encodeTest</button>
+    <script>
+        function test() {
+            var doc = document.getElementById('area1');
+            var src = "http://www.naver.com?test=한글입니다";
+            var escapeE = escape(src);
+            var enURI = encodeURI(src);
+            var enURICom = encodeURIComponent(src);
+            doc.innerHTML += src + "<br>";
+            doc.innerHTML += "escape() : " + escapeE + "<br>";
+            doc.innerHTML += "encodeURI() : " + enURI + "<br>";
+            doc.innerHTML += "encodeURIComponent() : " + enURICom + "<br>";
+            doc.innerHTML += "<br><br>";
+            doc.innerHTML += "unescape() : " + unescape(escapeE) + "<br>";
+            doc.innerHTML += "unescape() : " + decodeURI(enURI) + "<br>";
+            doc.innerHTML += "unescape() : " + decodeURIComponent(enURICom) + "<br>";
+
+        }
+    </script>
+    <h3>eval()</h3>
+    <p>문자열로 되어있는 소스코드형식을 소스코드로 해석하게 하는 함수</p>
+    <label>숫자1
+        <input type="text" name="su1" id="su1" />
+    </label>
+    <label>숫자2
+        <input type="text" name="su2" id="su2" />
+    </label>
+    <div id="area2"></div>
+    <button onclick="testEval()">evalTest</button>
+    <button onclick="cal()">곱하기</button>
+    <script>
+        function testEval() {
+            var textcode = "var num1 = parseInt(document.getElementById('su1').value);";
+            textcode += "var num2=parseInt(document.getElementById('su2').value);";
+            textcode += "var sum = 0;";
+            textcode += "sum = num1 + num2;";
+            textcode += "document.getElementById('area2').innerHTML = num1 + '와' + num2 + '의 합은 ' + sum + ' 입니다.';";
+            eval(textcode);
+            // console.log(textcode);
+        }
+
+        function cal(){
+            var number1 = document.getElementById('su1').value;
+            var number2 = document.getElementById('su2').value;
+            var total = number1 * number2;
+            if(isNaN(total)) {
+                document.getElementById('area2').innerHTML = "값을 잘못 입력하였습니다.";
+            } else {
+                document.getElementById('area2').innerHTML = number1 * number2;
+            }
+        }
+
+        var su1 = 5;
+        var su2 ='김';
+        var result = su1 - su2;
+        console.log(result === NaN);
+        console.log(result === 'NaN');
+        console.log(isNaN(result));
+        console.log('나누기값 : ' + (5 / 0));
+        console.log((5 / 0) == Infinity);
+        console.log((5 / 0) == 'Infinity');
+        var result2 = 5 / 0;
+        
+        console.log(result2 == Infinity);
+        console.log(isFinite(result2));
+        console.log(isFinite(5));
+        console.log((-2 / 0) == -Infinity);
+    </script>
+</body>
+
+</html>

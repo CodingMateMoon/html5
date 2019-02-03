@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>태그 불러오기</title>
+</head>
+
+<body>
+    <div id='area'>이거 바꿔봐</div>
+    <div id='area'>이거 바꿔봐</div>
+    <button onclick="func()">변경</button>
+    <!-- p[class='r']{}*4 -->
+    <p class="r">1</p>
+    <p class="r">2</p>
+    <p class="r">3</p>
+    <p class="r">4</p>
+    <h2 class="r">하하하하하!!!</h2>
+    <span class="r">이건 span</span><br>
+    이름<input type='text' name="name"/>
+    운동 <input type="checkbox" name="hobby" value="운동" checked/>
+    자바 <input type="checkbox" name="hobby" value="자바"/>
+    독서 <input type="checkbox" name="hobby" value="독서" checked/>
+    게임 <input type="checkbox" name="hobby" value="게임"/>
+    영화<input type="checkbox" name="hobby" value="영화" checked/>
+    음악<input type="checkbox" name="hobby" value="음악"/>
+    <!--체크된 값들 출력하기-->
+    <p id='c'></p>
+    <span class="test"></span>
+    <h1 id="print"></h1>
+    <script>
+        var hobbys=document.getElementsByName("hobby");
+        // console.log(hobbys);
+        // console.log(hobbys[0]);
+        for (var i = 0; i < hobbys.length; i++) {
+            // console.log(hobbys[i].checked);
+            if (hobbys[i].checked) {
+                console.log(hobbys[i].value);
+                document.getElementById("print").innerText += hobbys[i].value + "@@";
+            }
+        }
+    </script>
+    <script>
+        // var div = document.getElementById('area');
+        // console.log(div);
+        // div.innerHTML="이제 곧 저녁시간 입니다.";
+        var flag = true;
+        function func() {
+
+            var div = document.getElementById('area');
+            if (flag) {
+                console.log(div);
+                div.innerHTML = "이제 곧 저녁시간 입니다.";
+                flag = false;
+            } else {
+                div.innerHTML = "화이팅!";
+                flag = true;
+            }
+        }
+        console.log(document.getElementsByClassName('r'));
+        // HTMLCollection
+        var ps = document.getElementsByClassName('r');
+        console.log(ps[0].innerHTML);
+        for (var i = 0; i < ps.length; i++) {
+            if (ps[i].tagName == "P") {
+                if (i % 2 == 0)
+                    ps[i].innerHTML += " 짝수!";
+                else
+                    ps[i].innerHTML += " 홀수!";
+            }
+        }
+
+        var ch = document.getElementsByName("hobby");
+        var output = document.getElementById("c");
+        var test = document.getElementsByClassName("test");
+        for (var i = 0; i < ch.length; i++) {
+            if (ch[i].checked) {
+                output.innerHTML += ch[i].value + " ";
+                test[0].innerHTML += ch[i].value + "!!";
+            }
+        }
+    </script>
+
+    <ul>
+        <!-- li{}*5 -->
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var liList = document.getElementsByTagName("li");
+        console.log(liList);
+        for (var i = 0; i < liList.length; i++) {
+            liList[i].innerText = i + 1;
+        }
+    </script>
+</body>
+
+</html>

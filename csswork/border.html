@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>border스타일</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            display:inline-block;
+            /* 위 양옆 아래*/
+            padding:10px 20px 30px;
+        }
+        .dash{
+            border:1px dashed greenyellow;
+            /* 5px 두께 */
+            border-width:thick;
+            border-color:gold;
+        }
+        .double{
+            /* border:5px double green; */
+
+            border-style:double;
+            border-top-width:thin;
+            border-top-color:hotpink;
+        }
+        .groove{
+            border:5px groove greenyellow;
+            border-left-width:30px;
+        }
+        .inset{
+            border:5px inset greenyellow;
+            border-right-width:15px;
+        }
+        .outset{
+            border:5px outset greenyellow;
+            border-bottom-width:1px;
+        }
+        .ridge{
+            border:5px ridge green;
+        }
+        .radius{
+            /* border:1px solid fuchsia; */
+            display:block;
+            /* margin:20px; */
+            margin-top:10%;
+            margin-left:20%;
+            border-radius:50px;
+            background-size:cover;
+            /* background-image:url('iu.jpg'); */
+            background-image:url('suzi.jpg');
+            box-shadow:7px 7px 5px gray;
+            /* border-radius:10px; */
+            /* border-radius:40px; */
+            /* border-top-left-radius:50px;
+            border-bottom-right-radius:50px;
+            background-color:yellow; */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- div[class=""]{}*6 -->
+    <div class="dash">dashed</div>
+    <div class="double">double</div>
+    <div class="groove">groove</div>
+    <div class="inset">inset</div>
+    <div class="outset">outset</div>
+    <div class="ridge">ridge</div>
+    <div class="radius">&nbsp;&nbsp;&nbsp;. . . . . </div>
+
+</body>
+</html>

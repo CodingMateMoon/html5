@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>자료형 확인</title>
+</head>
+
+<body>
+
+    <h1>자료형</h1>
+    <p>
+        변수의 자료형은 선언과 동시에
+        결정되는것이 아니라
+        값을 대입하면서 자료형이 결정됨
+        리터럴값의 자료형으로 변수의 자료형이 결정
+    </p>
+    <div id='area'></div>
+    <button onclick="test()">클릭</button>
+    <script>
+        function test() {
+            // 문자열
+            var name = "유병승";
+            // 숫자형
+            var age = 19;
+            // 논리형
+            var flag = true;
+            // 객체
+            var obj = {};
+            // 배열
+            var arr = [];
+            // 함수
+            var func = function () { }
+            // undefined
+            var unde;
+            var doc = document.getElementById('area');
+            doc.innerHTML += "문자열 : " + name + " 자료형 확인 : " + typeof (name) + "<br>";
+            doc.innerHTML += "숫자 : " + age + " 자료형 확인 : " + typeof (age) + "<br>";
+            doc.innerHTML += "논리 : " + flag + " 자료형 확인 : " + typeof (flag) + "<br>";
+            doc.innerHTML += "객체 : " + obj + " 자료형 확인 : " + typeof (obj) + "<br>";
+            doc.innerHTML += "배열 : " + arr + " 자료형 확인 : " + typeof (arr) + "<br>";
+            doc.innerHTML += "함수 : " + func + " 자료형 확인 : " + typeof (func) + "<br>";
+            doc.innerHTML += "undefined : " + unde + " 자료형 확인 : " + typeof (unde) + "<br>";
+        }
+
+        name = 200;
+        unde = 20;
+        if (typeof (unde) == undefined) {
+            unde = 100;
+        }
+        console.log(unde);
+        // 변수는 자료형을 동적으로 할당
+        var temp = 100;
+        console.log(typeof (temp));
+        temp = "박진우 화이팅!";
+        console.log(typeof (temp));
+        temp = { name: "유병승", age: 19 };
+        console.log(typeof (temp));
+    </script>
+    <!-- String 함수에 대해 알아보자~ -->
+    <div id='area1'></div>
+    <button onclick="stringApi()">실행!</button>
+    <script>
+        function stringApi() {
+            var str = "Apple iPhone";
+            var doc = document.getElementById("area1");
+            doc.innerHTML += "기본문구 : " + str + "<br>";
+            // 모두 대문자로 바꾸는 함수
+            doc.innerHTML += "toUpperCase() : " + str.toUpperCase() + "<br>";
+            // 모두 소문자로 바꾸는 함수
+            doc.innerHTML += "toLowerCase() : " + str.toLowerCase() + "<br>";
+            // 문자열의 길이  : length
+            doc.innerHTML += "length : " + str.length + "<br>";
+            // indexOf/lastIndexOf : 특정한 문자를 찾아서 그 위치 인덱스를 반환 (0부터 시작)
+            doc.innerHTML += "indexOf() : " + str.indexOf("i") + "<br>";
+            doc.innerHTML += "lastIndexOf() : " + str.lastIndexOf("p") + "<br>";
+            // char : 특정문자 한개를 반환
+            doc.innerHTML += "charAt() : " + str.charAt(3) + "<br>";
+            // subString() : 문자를 원하는 만큼 잘라내는 것
+            doc.innerHTML += "substring(num, num2) : " + str.substring(0, 3) + "<br>";
+            // split() : 특정문자를 기준으로 배열을 변환
+            var str2 = "유병승, 신재민, 이일교, 박진우, 한솔";
+            doc.innerHTML += "split() : " + str2.split(",") + "<br>";
+            console.log(str2.split(","));
+            var names = str2.split(",");
+            console.log(typeof (names));
+
+        }
+
+    </script>
+    <p class="aca" id = "test">kh academy</p>
+    <div id="result"></div>
+    <button onclick="search1()">실행</button><br>
+    문구 <input type="text" name='str' id="str" />
+    <!-- 단일태그는 중간에 텍스트를 입력하는 공간이 없어서 innerHTML 없음-->
+    찾을문자 <input type="text" name="check" id="check" />
+    <div id="result2"></div>
+
+    <button onclick="search()">결과</button>
+    <script>
+        function search() {
+            var para = document.getElementsByName("str")[0].value;
+            var sea = document.getElementsByName("check")[0].value;
+            console.log(para);
+            console.log(sea);
+            var count = 0;
+            for (var i = 0; i < para.length; i++){
+                if (para.charAt(i) == sea) {
+                    count++
+                }
+            }
+            document.getElementById("result2").innerHTML = count + "개";
+            // console.log(para[0].value);
+        }
+    </script>
+
+    <script>
+
+        function search1() {
+            // kh academy에서 a의 갯수를 페이지에 출력해보세요
+            var kh = document.getElementsByClassName("aca");
+            var el2 = document.getElementById("test");
+            console.log(kh);
+            // [0] : key값 0에 매핑되는 value 가져옴
+            //  0: p#test.aca
+            console.log(kh[0]);
+            console.log(el2);
+            console.log(kh[0].innerText);
+            // console.log(kh[0].innerHTML);
+            var str = kh[0].innerText;
+
+            var count = 0;
+            for (var i = 0; i <  str.length; i++) {
+                if ( str.charAt(i) == 'a') {
+                    count++;
+                }
+            }
+            document.getElementById("result").innerText = count;
+        }
+
+        function search2() {
+            var s = document.getElementById("str").value;
+            var searchChar = document.getElementById("check").value;
+            console.log(searchChar);
+            var count2 = 0;
+            for (var i = 0; i < s.length; i++) {
+                if (s.charAt(i) == searchChar) {
+                    count2++;
+                }
+                // if (s.indexOf(searchChar)) {
+                //     console.log(s.indexOf(searchChar));
+                // }
+            }
+            var result = document.getElementById("result2");
+            result.innerText = count2;
+            console.log(count2);
+        }
+    </script>
+
+    <!-- 숫자자료형의 Math객체-->
+    <div id="area2"></div>
+    <button onclick="testMath()">실행</button>
+    <script>
+        function testMath() {
+            var num = 123;
+            var num2 = 123.567;
+            var doc = document.getElementById('area2');
+            // num, num2
+            doc.innerHTML += "num : " + num + " num2 : " + num2 + "<br>";
+            // 절대값
+            doc.innerHTML += "절대값 : " + Math.abs(num) + "<br>";
+            num = - 123;
+            doc.innerHTML += "절대값 : " + Math.abs(num) + "<br>";
+            // 반올림 : round() [ num2 ]
+            doc.innerHTML += "반올림 : " + Math.round(num2) + "<br>";
+            // 버림 : floor()
+            doc.innerHTML += "버림 : " + Math.floor(num2) + "<br>";
+            // 올림 : ceil()
+            doc.innerHTML += "올림 : " + Math.ceil(num2) + "<br>";
+            console.log(Math.floor(Math.random() * 10) + 1);
+        }
+    </script>
+    <!-- ol목록태그에 리스트 100개를 생성하여 그 100개의 li안에(텍스트노드) 랜덤값을 넣으세요 (1~100) -->
+    <!-- <ol id="order">
+
+    </ol> -->
+
+    <ol>
+
+    </ol>
+    <button onclick="addList()">가즈아!</button>
+
+    <script>
+        function addList() {
+            var parent = document.getElementsByTagName('ol');
+            for (var i = 0; i < 100; i++) {
+                parent[0].innerHTML+="<li>" + (Math.floor(Math.random() * 100 + 1)) + "</li>";
+            }
+        }
+
+        // 데이터 형변환!
+        var won = "1000000000원";
+        var addwon = "10000000원";
+        var dollar = "4.5 달라";
+        var total = parseInt(won) + parseInt(addwon);
+        var total2 = Number(won);
+        console.log(parseFloat(dollar));
+        console.log(total);
+        // NaN (Not a Number)
+        console.log(total2);
+
+    </script>
+
+    <script>
+        var ol = document.getElementById("order");
+        // console.log(ol);
+        var num = 1;
+        for(var i = 0; i < 100; i++) {
+            // console.log(Math.floor(Math.random() * 10) + 1);
+            // ol.innerHTML += "<li>" + (Math.floor(Math.random() * 100) + 1)  + "</li>";
+            // ol.innerHTML += "<li>" + i + "</li>";
+        }
+        // ol.innerHTML += "<li>" + num + "</li> <br>";
+    </script>
+
+</body>
+
+</html>

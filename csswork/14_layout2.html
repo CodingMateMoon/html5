@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>레이아웃 만들기</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background-color:tomato;
+            border:2px solid black;
+        }
+        #container{
+            /* position: relative; */
+            width: 500px;
+            height: 500px;
+            /* position:absolute; */
+            /* top:50px; */
+        }
+        .b2 {
+            /* relative이므로 container로 부터 50px top */
+            /* float 공간이 떠서 float된 블록 밑에 다른 블록이 들어갈수 */
+            background-color:aqua;
+            position:relative;
+            /* top:50px; */
+            /* container 기준 정사각형 밑변이 50px 더 내려감 */
+            bottom:50px;
+            left:50px;
+            /* position:relative; */
+            /* float:right; */
+            /* float:left; */
+            /* float:right; */
+        }
+        .b3{
+            /* absolute 이므로 페이지 최상단에서 50px */
+            background-color:green;
+            position:absolute;
+            top:50px;
+            left:100px;
+            /* float:left; */
+            /* float:right; */
+            /* clear:right; */
+            /* float:left; */
+        }
+
+        .b4{
+            background-color:pink;
+            position:relative;
+            /* b3까지 height 150px -> top 100px 이므로 250px 떨어진 거리부터 시작*/
+            top:100px;
+            left:400px;
+            /* float:right; */
+            /* float 설정 취소*/
+            /* clear:both; */
+        }
+
+        .b5{
+            background-color:lawngreen;
+            /* 위치고정 광고 등 */
+            position:fixed;
+            top:150px;
+            left:400px;
+            /* float:right; */
+        }
+
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <div class="b2">b2</div>
+        <div class="b3">b3</div>
+        <div class="b4">b4</div>
+    </div>
+    <div class='b5'>b5</div>
+    <div>d6</div>
+    <div id='b7'>d7</div>
+    <div id='b8'>d8</div>
+    <div>d9</div>
+    <div class='wrap'>
+        <div class='z-test z-test1'>test1</div>
+        <div class='z-test z-test2'>test2</div>
+        <div class='z-test z-test3'>test3</div>
+    </div>
+    <style>
+        .wrap{
+            position: relative;
+        }
+        .z-test{
+            width: 150px;
+            height: 100px;
+            border:1px solid black;
+        }
+        .z-test1{
+            background-color:yellow;
+            position: absolute;
+            top:80px;
+            left:80px;
+            /* z-index:1000; */
+            z-index:500;
+        }
+
+        .z-test2{
+            background-color:green;
+            position: absolute;
+            top:50px;
+            left:50px;
+            z-index:500;
+            /* z-index:1; */
+            z-index:1000;
+        }
+
+        .z-test3{
+            background-color:purple;
+            position: absolute;
+            /* z-index:1000; */
+            /* z-index:500; */
+            z-index:1;
+        }
+
+        #b7{
+            display:none;
+        }
+        #b8{
+            visibility: hidden;
+        }
+    </style>
+    <!-- br{}*5 -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</body>
+</html>

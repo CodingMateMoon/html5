@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>imageChange ex</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <img src="https://cdn.pixabay.com/photo/2017/09/16/19/21/salad-2756467__340.jpg" width="200px" height="200px">
+        <img src="https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg" width="200px" height="200px">
+        <img src="https://cdn.pixabay.com/photo/2016/11/30/15/23/apple-1873078__340.jpg" width="200px" height="200px">
+    </div>
+    <button onclick="shuffle()">섞기</button>
+    <button onclick="stopTest()">멈춤</button>
+    <script>
+        var stop;
+        function shuffle() {
+            // $("img")[$("img").length - 1].appendTo($("#container"));
+            console.log($("img"));
+
+            // 1. img:first
+            // 2. $("img").first()
+            // 3. $('img').eq(0)
+            // 4. $('img')[0]
+
+
+            var images = $("img");
+            console.log($("img").first());
+            // console.log(images[0]);
+            // console.log($("#container").append(images[0]));
+            // 호출될 때마다 id값 계속 생성한 뒤 넘겨서 이전 id값 상실
+            stop = setInterval(function () {
+
+                // $("div#container").append($("img").first());
+                $('img').last().after($("img:first"));
+            }, 1000);
+        }
+
+        function stopTest(){
+            clearInterval(stop);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>테이블 꾸미기</title>
+    <style>
+        .table {
+            caption-side: top;
+            border: 1px solid black;
+            width: 300px;
+            height: 300px;
+            /* border-collapse: collapse; */
+            border-spacing: 10px;
+            table-layout:fixed;
+            /* 내용이 block밖으로 벗어나지 않도록 줄바꿈*/
+            word-break: break-all;
+            empty-cells:hide;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+            /* vertical-align:bottom; */
+            vertical-align: top;
+            width:50px;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table">
+        <caption>성적표</caption>
+        <tr>
+            <td>구분</td>
+            <td>점수</td>
+        </tr>
+        <tr>
+            <td>수학</td>
+            <!-- <td>100</td> -->
+            <td></td>
+        </tr>
+        <tr>
+            <td>국어</td>
+            <td>50</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>가나다라마바사아자차카타abcdefghijklm123456789!@#$%</td>
+        </tr>
+
+    </table>
+</body>
+
+</html>

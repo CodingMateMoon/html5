@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본선택자</title>
+    <!-- 전체선택자, 태그선택자, 아이디선택자, 클래스선택자 -->
+    <style>
+        /* 전체선택자 */
+        * {
+            background-color: black;
+            color: white;
+            font-size:30px;
+        }
+
+        /* 태그선택자 */
+        h1 {
+            background-color:yellowgreen;
+            color:green;
+            font-size:20px;
+        }
+
+        ul, li {
+            background-color:yellow;
+            color:aqua;
+            font-size:35px;
+        }
+
+        #id1 {
+            background-color:blue;
+        }
+
+        #id2 {
+            background-color:purple;
+        }
+
+        /* class 선택자 */
+        .bgred{
+            background-color:hotpink;
+        }
+        .fontSize{
+            font-size:'50px';
+            font-weight:bolder;
+        }
+        .fontColor{
+            color:fuchsia;
+        }
+
+        /* li {
+            background-color:yellow;
+            color:aqua;
+            font-size:35px;
+        } */
+
+        /* id선택자 */
+
+    </style>
+</head>
+
+<body>
+    <h1 class='bgred'>이건 h1태그입니다.</h1>
+    <p class='fontSize fontColor'>이건 p태그입니다</p>
+    
+    <ul>
+        <li>HTML</li>
+        <li>Css</li>
+        <li>javaScript</li>
+        <li>jQuery</li>
+    </ul>
+    <table border='1'>
+        <tr>
+            <th>이건 테이블 헤더1</th>
+            <th>이건 테이블 헤더2</th>
+            <th>이건 테이블 헤더3</th>
+        </tr>
+        <tr>
+            <td id='id1'>이건 테이블 1</td>
+            <td id='id2'>이건 테이블 2</td>
+            <td >이건 테이블 3</td>
+        </tr>
+    </table>
+</body>
+
+</html>

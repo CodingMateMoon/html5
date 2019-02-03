@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <style>
+        * {
+            /* color :chocolate */
+        }
+    </style>
+    <script>
+
+        $(document).ready(function () {
+            // $("*").css("font-weight", "bold");
+            $("#idH").css("background-color", "lightpink");
+            $(".classH4,.classH5").css("background-color", "yellowgreen");
+            $("h5,h6").css("color", "chocolate");
+            $("p:first").css("background-color", "green");
+            $("p:last").css("background-color", "magenta");
+            $("p:even").css("color", "blue");
+            $("p:odd").css("font-size", "20px");
+            // $("p:first-child").css("background-color", "#2EFEF7");
+            $("p:nth-child(3)").css("background-color", "#2EFEF7");
+            $("p:first-of-type").css('font-size', "25px");
+            $("p:nth-last-of-type(2)").css("background-color", "#FE642E");
+            $("p:only-child").css("color", "red");
+            $("p:only-of-type").css("background-color", "yellow");
+        });
+
+    </script>
+</head>
+
+<body>
+    <h3 id="idH">using id h3</h3>
+    <h4 class="classH4">class h4</h4>
+    <h4 class="classH5">class h5</h4>
+    <h5>first h5</h5>
+    <h5>second h5</h5>
+    <h6>1 h6</h6>
+    <p>1 paragraph</p>
+    <p>2 paragraph</p>
+    <p>3 paragraph</p>
+    <p>4 paragraph</p>
+    <p>5 paragraph</p>
+    <p>6 paragraph</p>
+
+    <div style="border:1px dotted">
+        1 div
+        <!-- <br>  -->
+        <p>In 1div 1 paragraph</p>
+        <p>In 1div 2 paragraph</p>
+        <p>In 1div 3 paragraph</p>
+    </div>
+    <div style="border:1px dashed">
+        2 div
+        <br>
+        <span>In 2div 1 span</span>
+        <!-- <span>In 2div 2 span</span> -->
+        <p>In 2div 1 paragraph</p>
+        <p>In 2div 2 paragraph</p>
+        <span>In 2div 3 span</span>
+        <p>In 2div 3 paragraph</p>
+    </div>
+
+    <div style="border:5px groove">
+        <p>only-child paragraph</p>
+    </div>
+
+    <div style="border:5px ridge">
+        <span>1 span</span>
+        <p>only-of-type paragraph</p>
+    </div>
+
+    내용<input type="text" name="content" />
+    <button onclick="show()">내용 추가</button>
+    <div name="result"></div>
+
+    <div class="wrap">
+        <p>wrap 1 paragraph</p>
+        <p>wrap 2 paragraph</p>
+        <div>wrap 1 div
+            <p>In wrap 1 div 1paragraph</p>
+        </div>
+
+    </div>
+
+    국어<input type="checkbox" name="ck" value="국어"/>
+    &nbsp;&nbsp;영어<input type="checkbox" name="ck" value="영어" checked/>
+    &nbsp;&nbsp;수학<input type="checkbox" name="ck" value="수학" checked/>
+    <button onclick="getCheckbox()">체크박스 내용 추가</button>
+    <div name="printChecked"></div>
+    <script>
+        function show() {
+            var inputTag = $("input[name=content]");
+            var divTag = $("div[name=result]");
+            var content = divTag.html() + inputTag.val() + "<br>";
+            divTag.html(content);
+        }
+        console.log($(".wrap>p"));
+        $(".wrap>p").css("background-color", "orange");
+        console.log($(".wrap div>p"));
+        $(".wrap div>p").css("font-weight", "bolder");
+
+        function getCheckbox(){
+            console.log($(":checkbox"));
+            $(":checkbox").each(function(index, item) {
+                if (item.checked) {
+                    var div = $("div[name=printChecked]");
+                    var content = div.html() + " " + item.value;
+                    div.html(content);
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>

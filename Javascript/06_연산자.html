@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>연산자</title>
+</head>
+
+<body>
+    <script>
+        var num = 100;
+        var str = "100";
+        console.log(num == str);
+        console.log(num != str);
+
+        // 자료형까지 비교
+        console.log(String(num) === str);
+        console.log(String(num) !== str);
+        num == 100 || console.log("|| 앞에 참");
+        num == 100 && console.log("&& 앞에 참");
+        num != 100 && console.log("&& 앞에 거짓?");
+    </script>
+    <!-- 나이를 입력받고 
+        <div class="result"></div> 
+        0~18 : 열심히 공부하세요
+        19~30: 꿈을 이루세요~!
+        31~40: 안정적으로 건강하세요
+        41~99: 노년을 즐기세요!
+        출력되게 하세요
+    -->
+    <input type="text" id="input" />
+    <button onclick="submit()">전송</button>
+    <div class="result"></div>
+
+    <script>
+        function submit() {
+            var value = document.getElementById("input").value;
+            var str;
+            if (0 <= value && value < 19) {
+                str = "열심히 공부하세요";
+            } else if (19 <= value && value < 31) {
+                str = "꿈을 이루세요~!"
+            } else if (31 <= value && value < 41) {
+                str = "안정적으로 건강하세요";
+            } else if (41 <= value && value <= 99) {
+                str = "노년을 즐기세요!"
+            }
+            document.getElementsByClassName("result")[0].innerHTML = str + "<br>";
+        }
+    </script>
+
+    <div class="result2"></div>
+    <button onclick="age()">실행</button>
+    <script>
+        function age() {
+            var age = prompt("<나이 입력>");
+            var str;
+            // var doc = document.getElementsByClassName("result2")[0].innerHTML;
+            var doc = document.getElementsByClassName("result2")[0];
+            if (age <= 18) {
+                str = "열심히 공부하세요";
+            } else if (age <= 30) {
+                str = "꿈을 이루세요";
+            } else if (age <= 40) {
+                str = "안정적으로 건강하세요";
+            } else if (age <= 99) {
+                str = "노년을 즐기세요";
+            }
+            doc.innerHTML = str;
+            // doc = str;
+        }
+    </script>
+    <div id="test"></div>
+    <button onclick="test2()">실행2</button>
+    <script>
+        // 1000 : 1초
+        setInterval(test2, 1000);
+
+
+        function test2() {
+            var today = new Date().getMinutes();
+            var time = new Date().toTimeString()
+            console.log(today);
+            var doc = document.getElementById("test");
+            switch (true) {
+                case today >= 30 && today <= 40: doc.innerHTML = time + "<h1>지금은 쉬는 시간입니다.</h1>"; break;
+                default: doc.innerHTML = time + "<h1>지금은 수업중...</h1>"; break;
+            }
+        }
+        // 자바스크립트에서 for in문은 객체에 사용하는 용도로 쓰임, 배열에는 사용하지 말 것
+        // 배열에서 쓸 경우 꼬일 수 있음
+        var obj = {
+            "name": "유병승",
+            "age": 19,
+            "addr": "경기도 시흥시"
+        }
+
+        var arr = [1, 2, 3, 4, 5];
+        for (var v in arr) {
+            console.log(v);
+        }
+
+        for (var v in obj) {
+            console.log(obj[v]);
+        }
+
+    </script>
+
+
+</body>
+
+</html>

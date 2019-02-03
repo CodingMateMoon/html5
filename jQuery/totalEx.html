@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h1>javascript Test</h1>
+
+    <fieldset>
+        <legend>문제 1</legend>
+        <h3>input 태그에 숫자를 입력하고 버튼을 클릭하면, +10이 된 값을 alert으로 출력해 주세요</h3>
+        <h5>(input 값 : 5 -> alert으로 출력된 값 : 15 )</h5>
+        <input type="text" id="q01" />
+        <button onclick="answer01();">클릭</button>
+    </fieldset>
+    <script>
+
+
+        function answer01() {
+            alert(parseInt($("#q01").val()) + 10);
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 2</legend>
+        <h3>input 태그에 숫자를 입력하고 버튼을 클릭하였을 때, 해당 값이 존재하는지 여부를 출력해 주세요</h3>
+        <h5>(숫자가 있으면 : 해당 숫자 출력, 숫자가 없으면 "해당 숫자는 존재하지 않습니다." 출력)</h5>
+        <input type="text" id="inputVal" />
+        <button onclick="answer02();">클릭</button>
+        <pre id="numberArr">1 2 4 7 11 16</pre>
+    </fieldset>
+    <script>
+
+
+        var inputs = $("#numberArr").html().split(" ");
+        var arr = [];
+        for (var i = 0; i < inputs.length; i++) {
+            arr.push(parseInt(inputs[i]));
+        }
+
+        function answer02() {
+            var value = $("#inputVal").val();
+            var flag = true;
+            for (var i = 0; i < arr.length; i++) {
+                // console.log(arr[i]);
+                // console.log(value);
+                if (arr[i] == value) {
+                    // console.log("test");
+                    alert(value);
+                    flag = false;
+                }
+            }
+            if (flag) {
+                alert("해당 숫자는 존재하지 않습니다");
+            }
+
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 3</legend>
+        <h3>라디오버튼을 클릭하면 value값을 이용해 해당 사이트로 이동해 주세요.</h3>
+        <h5>(location.href 이용)</h5>
+        <input type="radio" name="rdo" value="naver" onclick="answer03();" />네이버<br />
+        <input type="radio" name="rdo" value="google" onclick="answer03();" />구글<br />
+        <input type="radio" name="rdo" value="w3schools" onclick="answer03();" />w3schools<br />
+    </fieldset>
+    <script>
+        var linkArr = { "naver": "https://www.naver.com/", "google": "https://www.google.co.kr/?hl=ko", "w3schools": "https://www.w3schools.com/" };
+        function answer03() {
+            // $("[name=rdo]").each(function (index) {
+            //     // console.log(index);
+            //     // console.log($(this));
+
+            //     console.log($(this)[0].checked);
+            //     console.log("is(':checked') :" + $(this).is(":checked"));
+            //     console.log($(this).val());
+            //     // if ($(this)[0].checked) {
+            //     if ($(this).is(":checked")) {
+            //         open(linkArr[$(this).val()], "_blank", "width=900px height=500px");
+            //         // window.location.href = linkArr[$(this).val()];
+            //     }
+            // });
+               console.log($("input[type=radio]:checked").val());
+            
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 4</legend>
+        <h3>버튼을 클릭하면, 첫번째 체크박스의 항목을 체크해 주세요</h3>
+        <input type="checkbox" name="subject" />Java<br />
+        <input type="checkbox" name="subject" />DataBase<br />
+        <input type="checkbox" name="subject" />Web<br />
+        <button onclick="answer04();">클릭</button>
+    </fieldset>
+    <script>
+        function answer04() {
+            // $("[name=subject]")[1].checked = true;
+            console.log($("input[name=subject]").eq(1).attr("checked", true));
+            // $("[name=subject]").eq(1).is(":checked") = true;
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 5</legend>
+        <h3>1~45 사이의 랜덤한 숫자를 생성해서 input 태그 안에 입력해 주세요.</h3>
+        랜덤 : <input type="text" readonly="readonly" id="randomVAl" />
+        <button onclick="answer05();">클릭</button>
+    </fieldset>
+    <script>
+        function answer05() {
+            var random = Math.floor(Math.random() * 45) + 1;
+            console.log(random);
+            // console.log($("#randomVAl")[0]);
+            // $("#randomVAl").val(random);
+            console.log($("#randomVAl")[0].value = random);
+            // $("#randomVAl").attr("value", random);
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 6</legend>
+        <h3>open 메소드를 사용하여, 선택한 select태그의 해당 패이지를 팝업창으로 실행해 주세요.</h3>
+        <h5>(새창, 새탭도 가능)</h5>
+        <select multiple="multiple" id="selOption">
+            <option value="naver">네이버</option>
+            <option value="google">구글</option>
+            <option value="w3schools">w3schools</option>
+        </select>
+        <button onclick="answer06();">클릭</button>
+    </fieldset>
+    <script>
+        function answer06() {
+            var selOption = $("#selOption");
+            console.log($("#selOption"));
+           
+            console.log(selOption.children());
+            $.each(selOption.children(), function (index, item) {
+                // console.log(item);
+                console.log(item.selected);
+                console.log(item.value);
+                if (item.selected) {
+                    open(linkArr[item.value], "_blank", "width=900px height=500px");
+                }
+            });
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 7</legend>
+        <h3>숫자를 유니코드 순으로 출력해 주세요.</h3>
+        숫자 : <span id="numList">1,2,3,11,21,22,214,6</span>
+        <button onclick="answer07();">클릭</button>
+    </fieldset>
+    <script>
+        function answer07() {
+            // var inputs = $("#numList")[0].value.split(",");
+            var inputs = $("#numList").html().split(",");
+            console.log(inputs);
+            var arr = [];
+            $.each(inputs, function (index, item) {
+                console.log(index + " : " + item);
+                arr.push(parseInt(item));
+            })
+            // alert(arr.sort(function(left, right){
+            //     return left - right;
+            //     // return right - left;
+            // }));
+            alert(inputs.sort(forSort));
+            console.log(arr);
+            // alert(arr.sort(forSort));
+
+            function forSort(left, right) {
+                return left - right;
+            }
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 8</legend>
+        <h3>선택한 날짜부터 3일 후의 요일을 alert으로 출력해 주세요.</h3>
+        <h5>(getDate(), setDate(), switch를 사용해 주세요)</h5>
+        <input type="date" id="inputDate" />
+        <button onclick="answer08();">클릭</button>
+    </fieldset>
+    <script>
+
+        function answer08() {
+            var input = $("#inputDate");
+            console.log(input);
+            console.log($("#inputDate").first());
+            // console.log(input.attr("value"));
+            // console.log(input[0].value);
+            console.log(input.val());
+            // var date = new Date(input[0].value);
+            var date = new Date(input.val());
+            console.log(date.getDate());
+            date.setDate(date.getDate() + 3);
+            console.log(date.getDate());
+            console.log(date.getDay());
+            var day = "";
+            switch (date.getDay()) {
+                case 0: day = "일요일"; break;
+                case 1: day = "월요일"; break;
+                case 2: day = "화요일"; break;
+                case 3: day = "수요일"; break;
+                case 4: day = "목요일"; break;
+                case 5: day = "금요일"; break;
+                case 6: day = "토요일"; break;
+            }
+            var result = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월 " + date.getDate() + "일\n";
+            alert(result + day);
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 9</legend>
+        <h3>원하는 구구단을 입력하고, alert으로 해당 단을 출력해 주세요.</h3>
+        <h5>입력 예 : 5 -> 출력 : 5*1=5 5*2=10 ...</h5>
+        <input type="text" id="dan" />
+        <button onclick="answer09();">클릭</button>
+    </fieldset>
+    <script>
+        function answer09() {
+            var dan = $("#dan").val();
+            console.log(dan);
+            var result = "";
+            for (var i = 1; i <= 9; i++) {
+                result += dan + "*" + i + "=" + (dan * i) + "\n";
+            }
+            alert(result);
+        }
+    </script>
+    <fieldset>
+        <legend>문제 10</legend>
+        <h3>input 태그에 입력한 문자열과, span 태그의 문자열을 합쳐서 출력해 주세요.</h3>
+        <h5>입력 예 : 홍길동 -> 출력 : "홍길동 님, 안녕하세요"</h5>
+        <input type="text" id="inputName" />
+        <span id="addVal">님, 안녕하세요</span>
+        <button onclick="answer10();">클릭</button>
+    </fieldset>
+    <script>
+        function answer10() {
+
+            var result = $("#inputName").val() + " " + $("#addVal").html();
+            $("#addVal").html(result);
+            alert(result);
+        }
+    </script>
+</body>
+
+</html>

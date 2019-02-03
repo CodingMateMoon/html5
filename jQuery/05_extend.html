@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>extend 활용하기</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+        .A {
+            color: white;
+            background-color: black;
+        }
+
+        .B {
+            color: tomato;
+            background-color: lightcyan;
+        }
+
+        .font {
+            font-size: 3em;
+            font-weight: bolder;
+        }
+
+        .s1 {
+            background-color: green;
+        }
+
+        .s2 {
+            background-color: lightsalmon;
+        }
+
+        .s3 {
+            background-color: lightskyblue;
+        }
+
+        .s4 {
+            background-color: lightseagreen;
+        }
+
+        .s5 {
+            background-color: lightgreen;
+        }
+
+        .s6 {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test">이일교 화이팅! 열공해요!</div>
+    <p class="A">나는 뭘 적용할까?</p>
+    <p class="B">나도 적용좀</p>
+    <span>이</span>
+    <span>일</span>
+    <span>교</span>
+    <span>선</span>
+    <span>택</span>
+    <button onclick="test()">실행</button>
+    <button onclick="test2()">제거</button>
+    <button onclick="test3()">한방에 해결~!</button>
+    <p>나도 적용좀2</p>
+    <script>
+
+        $(function(){
+            // $('span').on("mouseover", function(){
+            $('span').on("click", function(){
+                $("span").toggleClass(function(n, cur){
+                    console.log(cur);
+                    if (cur == "s2" || cur == "s4")
+                        // return "s" + (n + 1);
+                        return "s2";
+                     else   
+                        // return "s" + (n + 1) + " font";
+                        return "s" + (n + 1);
+                });
+            });
+        })
+
+        function test3() {
+            // $("span").toggleClass("B font");
+            $("span").toggleClass(function(n){
+                return "s" + (n + 1)
+            });
+        }
+
+        function test() {
+            // $('div').addClass("font A");
+            console.log($('span'));
+            $('span').addClass(function (n) {
+                console.log(n);
+                // if (n % 2 == 0) {
+                //     return "s3";
+                // } else {
+                //     return "s4";
+                // }
+                return "s" + (n + 1);
+            });
+        }
+        function test2() {
+            $("p").removeClass("A");
+            $("span").removeClass(function(n){
+                return "s" + (n + 1)
+            });
+        }
+
+        console.log($("#test"));
+        var obj = { "name": "유병승", "age": 19 };
+        console.log(obj);
+        $.extend(obj, { "height": 180.5, "weight": 65.5 });
+        console.log(obj);
+        var obj2 = { "상비약": "설사약, 두통약, 감기약", "item": "칼, 거즈" };
+        $.extend(obj, obj2);
+        console.log(obj);
+        obj.address = "경기도 시흥시";
+        obj['phone'] = "01023439932";
+        console.log(obj);
+        // $('p').addClass("font");
+
+        //충돌방지
+        console.log(jQuery("#test"));
+        console.log($("#test"));
+        // var JQ = $.noConflict();
+        // console.log(JQ("#test"));
+
+    </script>
+
+</body>
+
+</html>

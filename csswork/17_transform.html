@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>변형~!</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background-color:green;
+            border:3px solid yellow;
+        }
+        .trans:active{
+            transform:translate(500px, 30px);
+        }
+        .transX:active{
+            transform:translateX(100px);
+        }
+        .transY:active{
+            transform:translateY(100px);
+        }
+        .trans3d:active{
+            transform:perspective(150px) translate3d(100px, 100px, 100px);
+            /* transform:translate3d(100px, 100px, 100px); */
+        }
+        .scale1:hover{
+            transform:scale(2);
+        }
+        .scaleX:hover{
+            transform:scaleX(2);
+        }
+        .scaleY:hover{
+            transform:scaleY(2);
+        }
+
+        /* Z축 변경 없음 */
+        .scaleZ:hover{
+            transform:perspective(150px) scaleZ(3);
+        }
+        .rotate:hover{
+            transform: rotate(45deg);
+        }
+        .rotateX:hover{
+            transform:perspective(300px) rotateX(45deg);
+        }
+        .rotateY:hover{
+            /* transform:perspective(300px) rotateY(45deg); */
+            /* perspective 원근감 없어서 줄어듬*/
+            transform:rotateY(45deg);
+        }
+        /* 30도로 찌그러뜨림 */
+        .skew:hover{
+            transform: skew(30deg);
+        }
+        .skewX:hover{
+            transform: skewX(30deg);
+        }
+        .skewY:hover{
+            transform: skewY(30deg);
+        }
+        .ori {
+            /* transform-origin: left top; */
+            /* transform-origin: left bottom; */
+            transform-origin: left ;
+        }
+        .trans1:hover{
+            /* transform: rotate(45deg); */
+            transform: perspective(300px) rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="trans"></div>
+    <div class="transX"></div>
+    <div class="transY"></div>
+    <div class="trans3d"></div>
+    <p class="trans">재민씨... 말한번써봐요~! 들어갈 수 있습니다!</p>
+    <div class="scale1"></div>
+    <div class="scaleX"></div>
+    <div class="scaleY"></div>
+    <div class="scaleZ"></div>
+    <div class="rotate"></div>
+    <div class="rotateX"></div>
+    <div class="rotateY"></div>
+    <div class="skew"></div>
+    <div class="skewX"></div>
+    <div class="skewY"></div>
+    <img src="요강.jpg" alt="" class="ori trans1"/>
+</body>
+</html>
